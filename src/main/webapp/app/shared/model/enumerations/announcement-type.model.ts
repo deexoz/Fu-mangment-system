@@ -1,0 +1,7 @@
+export const enum AnnouncementType {
+  SUBMISSION = 'SUBMISSION',
+
+  DISCUSSIONS = 'DISCUSSIONS',
+
+  OBSERVATIONS = 'OBSERVATIONS',
+}

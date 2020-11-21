@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="student">
+            <h2><span jhiTranslate="pumsApp.student.detail.title">Student</span> {{ student.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="pumsApp.student.index">Index</span></dt>
+                <dd>
+                    <span>{{ student.index }}</span>
+                </dd>
+                <dt><span jhiTranslate="pumsApp.student.fullNameArabic">Full Name Arabic</span></dt>
+                <dd>
+                    <span>{{ student.fullNameArabic }}</span>
+                </dd>
+                <dt><span jhiTranslate="pumsApp.student.fullNameEnglish">Full Name English</span></dt>
+                <dd>
+                    <span>{{ student.fullNameEnglish }}</span>
+                </dd>
+                <dt><span jhiTranslate="pumsApp.student.phone">Phone</span></dt>
+                <dd>
+                    <span>{{ student.phone }}</span>
+                </dd>
+                <dt><span jhiTranslate="pumsApp.student.user">User</span></dt>
+                <dd>
+                    {{ student.user?.login }}
+                </dd>
+                <dt><span jhiTranslate="pumsApp.student.faculty">Faculty</span></dt>
+                <dd>
+                    <div *ngIf="student.faculty">
+                        <a [routerLink]="['/faculty', student.faculty?.id, 'view']">{{ student.faculty?.name }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="pumsApp.student.project">Project</span></dt>
+                <dd>
+                    <div *ngIf="student.project">
+                        <a [routerLink]="['/project', student.project?.id, 'view']">{{ student.project?.name }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/student', student.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

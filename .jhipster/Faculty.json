@@ -1,0 +1,36 @@
+{
+  "name": "Faculty",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "student",
+      "otherEntityRelationshipName": "faculty",
+      "relationshipName": "student"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "supervisor",
+      "otherEntityRelationshipName": "faculties",
+      "relationshipName": "supservisors",
+      "otherEntityField": "phoneNumber",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20201121125634",
+  "entityTableName": "faculty",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

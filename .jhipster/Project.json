@@ -1,0 +1,55 @@
+{
+  "name": "Project",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "detials",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "objective",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "problem",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "phase",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "phase"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "file",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "file"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "student",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "student"
+    }
+  ],
+  "changelogDate": "20201121125434",
+  "entityTableName": "project",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

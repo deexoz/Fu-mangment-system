@@ -1,0 +1,57 @@
+{
+  "name": "Phase",
+  "fields": [
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "discutionTime",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "resultData",
+      "otherEntityRelationshipName": "phase",
+      "relationshipName": "resultData",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "phaseType",
+      "otherEntityRelationshipName": "phase",
+      "relationshipName": "phaseType"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "announcement",
+      "otherEntityRelationshipName": "phase",
+      "relationshipName": "announcement"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "phase",
+      "relationshipName": "project",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201121125834",
+  "entityTableName": "phase",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

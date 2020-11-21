@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="project">
+            <h2><span jhiTranslate="pumsApp.project.detail.title">Project</span> {{ project.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="pumsApp.project.name">Name</span></dt>
+                <dd>
+                    <span>{{ project.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="pumsApp.project.detials">Detials</span></dt>
+                <dd>
+                    <span>{{ project.detials }}</span>
+                </dd>
+                <dt><span jhiTranslate="pumsApp.project.objective">Objective</span></dt>
+                <dd>
+                    <span>{{ project.objective }}</span>
+                </dd>
+                <dt><span jhiTranslate="pumsApp.project.problem">Problem</span></dt>
+                <dd>
+                    <span>{{ project.problem }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/project', project.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

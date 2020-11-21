@@ -1,0 +1,11 @@
+id;content;announcment_type;start_date;end_date
+1;../fake-data/blob/hipster.txt;SUBMISSION;2020-11-20;2020-11-21
+2;../fake-data/blob/hipster.txt;OBSERVATIONS;2020-11-20;2020-11-20
+3;../fake-data/blob/hipster.txt;OBSERVATIONS;2020-11-20;2020-11-21
+4;../fake-data/blob/hipster.txt;DISCUSSIONS;2020-11-21;2020-11-20
+5;../fake-data/blob/hipster.txt;DISCUSSIONS;2020-11-21;2020-11-20
+6;../fake-data/blob/hipster.txt;OBSERVATIONS;2020-11-21;2020-11-21
+7;../fake-data/blob/hipster.txt;SUBMISSION;2020-11-21;2020-11-20
+8;../fake-data/blob/hipster.txt;DISCUSSIONS;2020-11-20;2020-11-20
+9;../fake-data/blob/hipster.txt;SUBMISSION;2020-11-21;2020-11-21
+10;../fake-data/blob/hipster.txt;DISCUSSIONS;2020-11-20;2020-11-21

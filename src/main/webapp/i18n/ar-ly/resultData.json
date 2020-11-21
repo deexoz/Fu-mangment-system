@@ -1,0 +1,25 @@
+{
+  "pumsApp": {
+    "resultData": {
+      "home": {
+        "title": "Result Data",
+        "createLabel": "Create a new Result Data",
+        "createOrEditLabel": "Create or edit a Result Data",
+        "notFound": "No Result Data found"
+      },
+      "created": "A new Result Data is created with identifier {{ param }}",
+      "updated": "A Result Data is updated with identifier {{ param }}",
+      "deleted": "A Result Data is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Result Data {{ id }}?"
+      },
+      "detail": {
+        "title": "Result Data"
+      },
+      "ovservation": "Ovservation",
+      "date": "Date",
+      "file": "File",
+      "phase": "Phase"
+    }
+  }
+}

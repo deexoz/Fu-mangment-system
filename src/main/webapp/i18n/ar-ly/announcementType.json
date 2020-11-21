@@ -1,0 +1,10 @@
+{
+  "pumsApp": {
+    "AnnouncementType": {
+      "null": "",
+      "SUBMISSION": "SUBMISSION",
+      "DISCUSSIONS": "DISCUSSIONS",
+      "OBSERVATIONS": "OBSERVATIONS"
+    }
+  }
+}

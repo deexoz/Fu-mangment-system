@@ -1,0 +1,93 @@
+entity Student {
+	index String,
+    fullNameArabic String,
+    fullNameEnglish String,
+    phone String
+    //one user
+	//faculty
+    //project
+    
+
+}
+entity Project {
+	name String,
+    detials TextBlob,
+    objective TextBlob,
+    problem TextBlob,
+    //two or three students
+	//one supervisor
+    //one faculty
+}
+
+entity Supervisor{
+    phoneNumber String,
+    //projects,
+    //one user
+	//faculty
+}
+entity Faculty {
+	name String,
+    //supervisors
+    //students
+    //projects
+}
+
+entity PhaseType{
+	title String,
+    description TextBlob
+    phaseType AnnouncementType
+}
+entity Phase {
+    startDate LocalDate,
+    endDate LocalDate,
+    discutionTime String
+}
+enum AnnouncementType {
+	SUBMISSION, DISCUSSIONS, OBSERVATIONS
+}
+
+entity Announcement{
+	content TextBlob,
+    announcmentType AnnouncementType,
+    startDate LocalDate,
+    endDate LocalDate,
+    //phase
+    //faculty
+}
+
+entity ResultData {
+	ovservation TextBlob
+    date Instant
+    //project
+    //phase
+    //file
+}
+entity File {
+	name String
+    file Blob
+    date Instant
+    type String
+    //project
+    //faculty
+}
+
+relationship OneToOne {
+	Student{user(login)} to User
+    Phase to ResultData
+    ResultData to File
+    
+}
+
+relationship OneToMany {
+    Project to Phase
+    Project to File
+    Faculty to Student{faculty(name)}
+    Project to Student{project(name)}
+    Phase to PhaseType
+    Phase to Announcement
+}
+relationship ManyToMany {
+	Supervisor{faculties(name)} to Faculty{supservisors(phoneNumber)}
+}
+paginate * with pagination
+service * with serviceClass

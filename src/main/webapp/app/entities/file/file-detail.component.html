@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="file">
+            <h2><span jhiTranslate="pumsApp.file.detail.title">File</span> {{ file.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="pumsApp.file.name">Name</span></dt>
+                <dd>
+                    <span>{{ file.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="pumsApp.file.file">File</span></dt>
+                <dd>
+                    <div *ngIf="file.file">
+                        <a (click)="openFile(file.fileContentType, file.file)" jhiTranslate="entity.action.open">open</a>
+                        {{ file.fileContentType }}, {{ byteSize(file.file) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="pumsApp.file.date">Date</span></dt>
+                <dd>
+                    <span>{{ file.date }}</span>
+                </dd>
+                <dt><span jhiTranslate="pumsApp.file.type">Type</span></dt>
+                <dd>
+                    <span>{{ file.type }}</span>
+                </dd>
+                <dt><span jhiTranslate="pumsApp.file.project">Project</span></dt>
+                <dd>
+                    <div *ngIf="file.project">
+                        <a [routerLink]="['/project', file.project?.id, 'view']">{{ file.project?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/file', file.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

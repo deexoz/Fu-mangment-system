@@ -48,6 +48,23 @@ public class CacheConfiguration {
             createCache(cm, com.fu.pums.domain.User.class.getName());
             createCache(cm, com.fu.pums.domain.Authority.class.getName());
             createCache(cm, com.fu.pums.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.fu.pums.domain.Student.class.getName());
+            createCache(cm, com.fu.pums.domain.Project.class.getName());
+            createCache(cm, com.fu.pums.domain.Project.class.getName() + ".phases");
+            createCache(cm, com.fu.pums.domain.Project.class.getName() + ".files");
+            createCache(cm, com.fu.pums.domain.Project.class.getName() + ".students");
+            createCache(cm, com.fu.pums.domain.Supervisor.class.getName());
+            createCache(cm, com.fu.pums.domain.Supervisor.class.getName() + ".faculties");
+            createCache(cm, com.fu.pums.domain.Faculty.class.getName());
+            createCache(cm, com.fu.pums.domain.Faculty.class.getName() + ".students");
+            createCache(cm, com.fu.pums.domain.Faculty.class.getName() + ".supservisors");
+            createCache(cm, com.fu.pums.domain.PhaseType.class.getName());
+            createCache(cm, com.fu.pums.domain.Phase.class.getName());
+            createCache(cm, com.fu.pums.domain.Phase.class.getName() + ".phaseTypes");
+            createCache(cm, com.fu.pums.domain.Phase.class.getName() + ".announcements");
+            createCache(cm, com.fu.pums.domain.Announcement.class.getName());
+            createCache(cm, com.fu.pums.domain.ResultData.class.getName());
+            createCache(cm, com.fu.pums.domain.File.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }
