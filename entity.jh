@@ -1,93 +1,93 @@
 entity Student {
 	index String,
     fullNameArabic String,
-    fullNameEnglish String,
     phone String
     //one user
-	//faculty
-    //project
+	//one faculty
+    //one project
+    }
     
-
-}
 entity Project {
 	name String,
-    detials TextBlob,
-    objective TextBlob,
-    problem TextBlob,
-    //two or three students
+    details TextBlob,
+    objectives TextBlob,
+    problems TextBlob,
+    //many students
 	//one supervisor
     //one faculty
+    //many files
+    //many observations
 }
+enum Gender{ MALE, FEMALE, OTHER}
 
 entity Supervisor{
+	fullName String,
+    role String,
+    gender Gender,
+    email String,
     phoneNumber String,
-    //projects,
-    //one user
-	//faculty
+    //many projects,
+	//one faculty
 }
+
 entity Faculty {
 	name String,
+    code String,
     //supervisors
     //students
     //projects
+    //announcments
 }
 
-entity PhaseType{
-	title String,
-    description TextBlob
-    phaseType AnnouncementType
-}
-entity Phase {
-    startDate LocalDate,
-    endDate LocalDate,
-    discutionTime String
-}
 enum AnnouncementType {
-	SUBMISSION, DISCUSSIONS, OBSERVATIONS
+	SUBMISSION, DISCUSSIONS, OBSERVATIONS, OTHERS
 }
 
 entity Announcement{
+	title String
 	content TextBlob,
     announcmentType AnnouncementType,
     startDate LocalDate,
     endDate LocalDate,
-    //phase
     //faculty
+  }
+
+entity Observation {
+	title String
+	detail TextBlob
+    creationDate Instant
+    //one project
+    //one file
 }
 
-entity ResultData {
-	ovservation TextBlob
-    date Instant
-    //project
-    //phase
-    //file
-}
 entity File {
 	name String
     file Blob
-    date Instant
+    uploadDate Instant
     type String
-    //project
-    //faculty
+    //one project
+    //one observation
 }
 
 relationship OneToOne {
-	Student{user(login)} to User
-    Phase to ResultData
-    ResultData to File
-    
+	Student{user(login)} to User{student(index)}
+    Observation{file(name)} to File{observation(name)}
 }
 
 relationship OneToMany {
-    Project to Phase
-    Project to File
-    Faculty to Student{faculty(name)}
-    Project to Student{project(name)}
-    Phase to PhaseType
-    Phase to Announcement
+    Faculty{students(index)} to Student{faculty(name)}
+    Faculty{projects(name)} to Project{faculty(name)}
+    Faculty{announcments(title)} to Announcement{faculty(name)}
+    Supervisor{projects(name)} to Project{supervisor(fullName)}
+    Project{students(index)} to Student{project(name)}
+    Project{files(name)} to File{project(name)}
+    Project{observations(title)} to Observation{project(name)}
 }
+
 relationship ManyToMany {
-	Supervisor{faculties(name)} to Faculty{supservisors(phoneNumber)}
+	Faculty{supervisors(fullName)} to Supervisor{faculties(name)}
 }
+
 paginate * with pagination
 service * with serviceClass
+filter * 
