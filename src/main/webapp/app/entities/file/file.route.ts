@@ -41,7 +41,7 @@ export const fileRoute: Routes = [
     data: {
       authorities: [Authority.USER],
       defaultSort: 'id,asc',
-      pageTitle: 'pumsApp.file.home.title',
+      pageTitle: 'projecunitmangmentApp.file.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -53,7 +53,7 @@ export const fileRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'pumsApp.file.home.title',
+      pageTitle: 'projecunitmangmentApp.file.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -65,7 +65,7 @@ export const fileRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'pumsApp.file.home.title',
+      pageTitle: 'projecunitmangmentApp.file.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -77,7 +77,7 @@ export const fileRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'pumsApp.file.home.title',
+      pageTitle: 'projecunitmangmentApp.file.home.title',
     },
     canActivate: [UserRouteAccessService],
   },

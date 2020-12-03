@@ -1,7 +1,7 @@
 {
-  "name": "pums",
+  "name": "projecunitmangment",
   "version": "0.0.1-SNAPSHOT",
-  "description": "Description for pums",
+  "description": "Description for projecunitmangment",
   "private": true,
   "license": "UNLICENSED",
   "cacheDirectories": [

@@ -1,6 +1,6 @@
 package com.fu.pums.web.rest;
 
-import com.fu.pums.PumsApp;
+import com.fu.pums.ProjecunitmangmentApp;
 import com.fu.pums.domain.PersistentAuditEvent;
 import com.fu.pums.repository.PersistenceAuditEventRepository;
 import com.fu.pums.security.AuthoritiesConstants;
@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @AutoConfigureMockMvc
 @WithMockUser(authorities = AuthoritiesConstants.ADMIN)
-@SpringBootTest(classes = PumsApp.class)
+@SpringBootTest(classes = ProjecunitmangmentApp.class)
 @Transactional
 public class AuditResourceIT {
 

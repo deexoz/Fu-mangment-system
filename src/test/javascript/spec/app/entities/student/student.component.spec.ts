@@ -3,7 +3,7 @@ import { of } from 'rxjs';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 
-import { PumsTestModule } from '../../../test.module';
+import { ProjecunitmangmentTestModule } from '../../../test.module';
 import { StudentComponent } from 'app/entities/student/student.component';
 import { StudentService } from 'app/entities/student/student.service';
 import { Student } from 'app/shared/model/student.model';
@@ -16,7 +16,7 @@ describe('Component Tests', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [PumsTestModule],
+        imports: [ProjecunitmangmentTestModule],
         declarations: [StudentComponent],
         providers: [
           {

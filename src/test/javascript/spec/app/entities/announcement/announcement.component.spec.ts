@@ -3,7 +3,7 @@ import { of } from 'rxjs';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 
-import { PumsTestModule } from '../../../test.module';
+import { ProjecunitmangmentTestModule } from '../../../test.module';
 import { AnnouncementComponent } from 'app/entities/announcement/announcement.component';
 import { AnnouncementService } from 'app/entities/announcement/announcement.service';
 import { Announcement } from 'app/shared/model/announcement.model';
@@ -16,7 +16,7 @@ describe('Component Tests', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [PumsTestModule],
+        imports: [ProjecunitmangmentTestModule],
         declarations: [AnnouncementComponent],
         providers: [
           {

@@ -14,40 +14,20 @@
     <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-<<<<<<< HEAD
-    <include file="config/liquibase/changelog/20201121125334_added_entity_Student.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201121125434_added_entity_Project.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201121125534_added_entity_Supervisor.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201121125634_added_entity_Faculty.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201121125734_added_entity_PhaseType.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201121125834_added_entity_Phase.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201121125934_added_entity_Announcement.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201121130034_added_entity_ResultData.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201121130134_added_entity_File.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201203130532_added_entity_Student.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201203130632_added_entity_Project.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201203130732_added_entity_Supervisor.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201203130832_added_entity_Faculty.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201203130932_added_entity_Announcement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201203131032_added_entity_Observation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201203131132_added_entity_File.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="config/liquibase/changelog/20201121125334_added_entity_constraints_Student.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201121125534_added_entity_constraints_Supervisor.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201121125734_added_entity_constraints_PhaseType.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201121125834_added_entity_constraints_Phase.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201121125934_added_entity_constraints_Announcement.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201121130034_added_entity_constraints_ResultData.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201121130134_added_entity_constraints_File.xml" relativeToChangelogFile="false"/>
-=======
-    <include file="config/liquibase/changelog/20201203113839_added_entity_Student.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201203113939_added_entity_Project.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201203114039_added_entity_Supervisor.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201203114139_added_entity_Faculty.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201203114239_added_entity_Announcement.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201203114339_added_entity_Observation.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201203114439_added_entity_File.xml" relativeToChangelogFile="false"/>
-    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="config/liquibase/changelog/20201203113839_added_entity_constraints_Student.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201203113939_added_entity_constraints_Project.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201203114139_added_entity_constraints_Faculty.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201203114239_added_entity_constraints_Announcement.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201203114339_added_entity_constraints_Observation.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20201203114439_added_entity_constraints_File.xml" relativeToChangelogFile="false"/>
->>>>>>> Initial version of pums generated by JHipster-6.10.5 with entity
+    <include file="config/liquibase/changelog/20201203130532_added_entity_constraints_Student.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201203130632_added_entity_constraints_Project.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201203130832_added_entity_constraints_Faculty.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201203130932_added_entity_constraints_Announcement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201203131032_added_entity_constraints_Observation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20201203131132_added_entity_constraints_File.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

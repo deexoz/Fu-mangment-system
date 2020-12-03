@@ -5,7 +5,7 @@ import { Subject, of } from 'rxjs';
 import { TranslateModule, TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 import { MainComponent } from 'app/layouts/main/main.component';
-import { PumsTestModule } from '../../../test.module';
+import { ProjecunitmangmentTestModule } from '../../../test.module';
 import { MockRouter } from '../../../helpers/mock-route.service';
 import { FindLanguageFromKeyPipe } from 'app/shared/language/find-language-from-key.pipe';
 
@@ -20,7 +20,7 @@ describe('Component Tests', () => {
 
     beforeEach(async(() => {
       TestBed.configureTestingModule({
-        imports: [PumsTestModule, TranslateModule.forRoot()],
+        imports: [ProjecunitmangmentTestModule, TranslateModule.forRoot()],
         declarations: [MainComponent],
         providers: [Title, FindLanguageFromKeyPipe],
       })

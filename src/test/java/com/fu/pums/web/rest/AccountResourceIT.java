@@ -1,6 +1,6 @@
 package com.fu.pums.web.rest;
 
-import com.fu.pums.PumsApp;
+import com.fu.pums.ProjecunitmangmentApp;
 import com.fu.pums.config.Constants;
 import com.fu.pums.domain.User;
 import com.fu.pums.repository.AuthorityRepository;
@@ -37,7 +37,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @AutoConfigureMockMvc
 @WithMockUser(value = TEST_USER_LOGIN)
-@SpringBootTest(classes = PumsApp.class)
+@SpringBootTest(classes = ProjecunitmangmentApp.class)
 public class AccountResourceIT {
     static final String TEST_USER_LOGIN = "test";
 

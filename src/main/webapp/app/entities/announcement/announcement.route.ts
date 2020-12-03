@@ -41,7 +41,7 @@ export const announcementRoute: Routes = [
     data: {
       authorities: [Authority.USER],
       defaultSort: 'id,asc',
-      pageTitle: 'pumsApp.announcement.home.title',
+      pageTitle: 'projecunitmangmentApp.announcement.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -53,7 +53,7 @@ export const announcementRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'pumsApp.announcement.home.title',
+      pageTitle: 'projecunitmangmentApp.announcement.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -65,7 +65,7 @@ export const announcementRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'pumsApp.announcement.home.title',
+      pageTitle: 'projecunitmangmentApp.announcement.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -77,7 +77,7 @@ export const announcementRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'pumsApp.announcement.home.title',
+      pageTitle: 'projecunitmangmentApp.announcement.home.title',
     },
     canActivate: [UserRouteAccessService],
   },

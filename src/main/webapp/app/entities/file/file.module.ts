@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { PumsSharedModule } from 'app/shared/shared.module';
+import { ProjecunitmangmentSharedModule } from 'app/shared/shared.module';
 import { FileComponent } from './file.component';
 import { FileDetailComponent } from './file-detail.component';
 import { FileUpdateComponent } from './file-update.component';
@@ -9,8 +9,8 @@ import { FileDeleteDialogComponent } from './file-delete-dialog.component';
 import { fileRoute } from './file.route';
 
 @NgModule({
-  imports: [PumsSharedModule, RouterModule.forChild(fileRoute)],
+  imports: [ProjecunitmangmentSharedModule, RouterModule.forChild(fileRoute)],
   declarations: [FileComponent, FileDetailComponent, FileUpdateComponent, FileDeleteDialogComponent],
   entryComponents: [FileDeleteDialogComponent],
 })
-export class PumsFileModule {}
+export class ProjecunitmangmentFileModule {}

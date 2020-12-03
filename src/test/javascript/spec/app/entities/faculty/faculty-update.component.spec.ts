@@ -3,7 +3,7 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { of } from 'rxjs';
 
-import { PumsTestModule } from '../../../test.module';
+import { ProjecunitmangmentTestModule } from '../../../test.module';
 import { FacultyUpdateComponent } from 'app/entities/faculty/faculty-update.component';
 import { FacultyService } from 'app/entities/faculty/faculty.service';
 import { Faculty } from 'app/shared/model/faculty.model';
@@ -16,7 +16,7 @@ describe('Component Tests', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [PumsTestModule],
+        imports: [ProjecunitmangmentTestModule],
         declarations: [FacultyUpdateComponent],
         providers: [FormBuilder],
       })

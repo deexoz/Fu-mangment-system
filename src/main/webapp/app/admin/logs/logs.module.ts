@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { PumsSharedModule } from 'app/shared/shared.module';
+import { ProjecunitmangmentSharedModule } from 'app/shared/shared.module';
 
 import { LogsComponent } from './logs.component';
 
 import { logsRoute } from './logs.route';
 
 @NgModule({
-  imports: [PumsSharedModule, RouterModule.forChild([logsRoute])],
+  imports: [ProjecunitmangmentSharedModule, RouterModule.forChild([logsRoute])],
   declarations: [LogsComponent],
 })
 export class LogsModule {}

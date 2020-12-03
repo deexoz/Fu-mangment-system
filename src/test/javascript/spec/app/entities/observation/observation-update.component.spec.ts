@@ -3,7 +3,7 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { of } from 'rxjs';
 
-import { PumsTestModule } from '../../../test.module';
+import { ProjecunitmangmentTestModule } from '../../../test.module';
 import { ObservationUpdateComponent } from 'app/entities/observation/observation-update.component';
 import { ObservationService } from 'app/entities/observation/observation.service';
 import { Observation } from 'app/shared/model/observation.model';
@@ -16,7 +16,7 @@ describe('Component Tests', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [PumsTestModule],
+        imports: [ProjecunitmangmentTestModule],
         declarations: [ObservationUpdateComponent],
         providers: [FormBuilder],
       })

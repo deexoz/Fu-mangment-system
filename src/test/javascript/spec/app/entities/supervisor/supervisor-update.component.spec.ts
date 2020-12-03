@@ -3,7 +3,7 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { of } from 'rxjs';
 
-import { PumsTestModule } from '../../../test.module';
+import { ProjecunitmangmentTestModule } from '../../../test.module';
 import { SupervisorUpdateComponent } from 'app/entities/supervisor/supervisor-update.component';
 import { SupervisorService } from 'app/entities/supervisor/supervisor.service';
 import { Supervisor } from 'app/shared/model/supervisor.model';
@@ -16,7 +16,7 @@ describe('Component Tests', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [PumsTestModule],
+        imports: [ProjecunitmangmentTestModule],
         declarations: [SupervisorUpdateComponent],
         providers: [FormBuilder],
       })

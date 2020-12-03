@@ -41,7 +41,7 @@ export const supervisorRoute: Routes = [
     data: {
       authorities: [Authority.USER],
       defaultSort: 'id,asc',
-      pageTitle: 'pumsApp.supervisor.home.title',
+      pageTitle: 'projecunitmangmentApp.supervisor.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -53,7 +53,7 @@ export const supervisorRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'pumsApp.supervisor.home.title',
+      pageTitle: 'projecunitmangmentApp.supervisor.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -65,7 +65,7 @@ export const supervisorRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'pumsApp.supervisor.home.title',
+      pageTitle: 'projecunitmangmentApp.supervisor.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -77,7 +77,7 @@ export const supervisorRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'pumsApp.supervisor.home.title',
+      pageTitle: 'projecunitmangmentApp.supervisor.home.title',
     },
     canActivate: [UserRouteAccessService],
   },

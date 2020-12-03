@@ -41,7 +41,7 @@ export const observationRoute: Routes = [
     data: {
       authorities: [Authority.USER],
       defaultSort: 'id,asc',
-      pageTitle: 'pumsApp.observation.home.title',
+      pageTitle: 'projecunitmangmentApp.observation.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -53,7 +53,7 @@ export const observationRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'pumsApp.observation.home.title',
+      pageTitle: 'projecunitmangmentApp.observation.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -65,7 +65,7 @@ export const observationRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'pumsApp.observation.home.title',
+      pageTitle: 'projecunitmangmentApp.observation.home.title',
     },
     canActivate: [UserRouteAccessService],
   },
@@ -77,7 +77,7 @@ export const observationRoute: Routes = [
     },
     data: {
       authorities: [Authority.USER],
-      pageTitle: 'pumsApp.observation.home.title',
+      pageTitle: 'projecunitmangmentApp.observation.home.title',
     },
     canActivate: [UserRouteAccessService],
   },

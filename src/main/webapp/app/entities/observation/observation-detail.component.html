@@ -1,32 +1,32 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="observation">
-            <h2><span jhiTranslate="pumsApp.observation.detail.title">Observation</span> {{ observation.id }}</h2>
+            <h2><span jhiTranslate="projecunitmangmentApp.observation.detail.title">Observation</span> {{ observation.id }}</h2>
 
             <hr>
 
             <jhi-alert-error></jhi-alert-error>
 
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="pumsApp.observation.title">Title</span></dt>
+                <dt><span jhiTranslate="projecunitmangmentApp.observation.title">Title</span></dt>
                 <dd>
                     <span>{{ observation.title }}</span>
                 </dd>
-                <dt><span jhiTranslate="pumsApp.observation.detail">Detail</span></dt>
+                <dt><span jhiTranslate="projecunitmangmentApp.observation.detail">Detail</span></dt>
                 <dd>
                     <span>{{ observation.detail }}</span>
                 </dd>
-                <dt><span jhiTranslate="pumsApp.observation.creationDate">Creation Date</span></dt>
+                <dt><span jhiTranslate="projecunitmangmentApp.observation.creationDate">Creation Date</span></dt>
                 <dd>
                     <span>{{ observation.creationDate }}</span>
                 </dd>
-                <dt><span jhiTranslate="pumsApp.observation.file">File</span></dt>
+                <dt><span jhiTranslate="projecunitmangmentApp.observation.file">File</span></dt>
                 <dd>
                     <div *ngIf="observation.file">
                         <a [routerLink]="['/file', observation.file?.id, 'view']">{{ observation.file?.name }}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="pumsApp.observation.project">Project</span></dt>
+                <dt><span jhiTranslate="projecunitmangmentApp.observation.project">Project</span></dt>
                 <dd>
                     <div *ngIf="observation.project">
                         <a [routerLink]="['/project', observation.project?.id, 'view']">{{ observation.project?.name }}</a>

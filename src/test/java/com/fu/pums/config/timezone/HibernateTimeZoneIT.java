@@ -1,6 +1,6 @@
 package com.fu.pums.config.timezone;
 
-import com.fu.pums.PumsApp;
+import com.fu.pums.ProjecunitmangmentApp;
 import com.fu.pums.repository.timezone.DateTimeWrapper;
 import com.fu.pums.repository.timezone.DateTimeWrapperRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Integration tests for the ZoneId Hibernate configuration.
  */
-@SpringBootTest(classes = PumsApp.class)
+@SpringBootTest(classes = ProjecunitmangmentApp.class)
 public class HibernateTimeZoneIT {
 
     @Autowired

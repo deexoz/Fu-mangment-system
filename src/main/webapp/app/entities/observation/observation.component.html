@@ -1,10 +1,10 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="pumsApp.observation.home.title">Observations</span>
+        <span jhiTranslate="projecunitmangmentApp.observation.home.title">Observations</span>
 
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-observation" [routerLink]="['/observation/new']">
             <fa-icon icon="plus"></fa-icon>
-            <span  jhiTranslate="pumsApp.observation.home.createLabel">
+            <span  jhiTranslate="projecunitmangmentApp.observation.home.createLabel">
             Create a new Observation
             </span>
         </button>
@@ -15,7 +15,7 @@
     <jhi-alert></jhi-alert>
 
     <div class="alert alert-warning" id="no-result" *ngIf="observations?.length === 0">
-        <span jhiTranslate="pumsApp.observation.home.notFound">No observations found</span>
+        <span jhiTranslate="projecunitmangmentApp.observation.home.notFound">No observations found</span>
     </div>
 
     <div class="table-responsive" id="entities" *ngIf="observations && observations.length > 0">
@@ -23,11 +23,11 @@
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="title"><span jhiTranslate="pumsApp.observation.title">Title</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="detail"><span jhiTranslate="pumsApp.observation.detail">Detail</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="creationDate"><span jhiTranslate="pumsApp.observation.creationDate">Creation Date</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="file.name"><span jhiTranslate="pumsApp.observation.file">File</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="project.name"><span jhiTranslate="pumsApp.observation.project">Project</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="title"><span jhiTranslate="projecunitmangmentApp.observation.title">Title</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="detail"><span jhiTranslate="projecunitmangmentApp.observation.detail">Detail</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="creationDate"><span jhiTranslate="projecunitmangmentApp.observation.creationDate">Creation Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="file.name"><span jhiTranslate="projecunitmangmentApp.observation.file">File</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="project.name"><span jhiTranslate="projecunitmangmentApp.observation.project">Project</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>

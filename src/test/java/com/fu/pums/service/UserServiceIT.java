@@ -1,6 +1,6 @@
 package com.fu.pums.service;
 
-import com.fu.pums.PumsApp;
+import com.fu.pums.ProjecunitmangmentApp;
 import com.fu.pums.config.Constants;
 import com.fu.pums.domain.User;
 import com.fu.pums.repository.UserRepository;
@@ -32,7 +32,7 @@ import static org.mockito.Mockito.when;
 /**
  * Integration tests for {@link UserService}.
  */
-@SpringBootTest(classes = PumsApp.class)
+@SpringBootTest(classes = ProjecunitmangmentApp.class)
 @Transactional
 public class UserServiceIT {
 

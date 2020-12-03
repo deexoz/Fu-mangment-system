@@ -1,6 +1,6 @@
 package com.fu.pums.web.rest;
 
-import com.fu.pums.PumsApp;
+import com.fu.pums.ProjecunitmangmentApp;
 import com.fu.pums.domain.Observation;
 import com.fu.pums.domain.File;
 import com.fu.pums.domain.Project;
@@ -32,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Integration tests for the {@link ObservationResource} REST controller.
  */
-@SpringBootTest(classes = PumsApp.class)
+@SpringBootTest(classes = ProjecunitmangmentApp.class)
 @AutoConfigureMockMvc
 @WithMockUser
 public class ObservationResourceIT {

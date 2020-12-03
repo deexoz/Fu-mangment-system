@@ -32,7 +32,7 @@
       "otherEntityField": "name"
     }
   ],
-  "changelogDate": "20201203114339",
+  "changelogDate": "20201203131032",
   "entityTableName": "observation",
   "dto": "no",
   "pagination": "pagination",

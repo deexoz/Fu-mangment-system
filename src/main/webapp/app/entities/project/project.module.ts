@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { PumsSharedModule } from 'app/shared/shared.module';
+import { ProjecunitmangmentSharedModule } from 'app/shared/shared.module';
 import { ProjectComponent } from './project.component';
 import { ProjectDetailComponent } from './project-detail.component';
 import { ProjectUpdateComponent } from './project-update.component';
@@ -9,8 +9,8 @@ import { ProjectDeleteDialogComponent } from './project-delete-dialog.component'
 import { projectRoute } from './project.route';
 
 @NgModule({
-  imports: [PumsSharedModule, RouterModule.forChild(projectRoute)],
+  imports: [ProjecunitmangmentSharedModule, RouterModule.forChild(projectRoute)],
   declarations: [ProjectComponent, ProjectDetailComponent, ProjectUpdateComponent, ProjectDeleteDialogComponent],
   entryComponents: [ProjectDeleteDialogComponent],
 })
-export class PumsProjectModule {}
+export class ProjecunitmangmentProjectModule {}

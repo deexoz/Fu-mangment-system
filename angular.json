@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pums": {
+    "projecunitmangment": {
       "root": "",
       "sourceRoot": "src/main/webapp",
       "projectType": "application",
@@ -29,7 +29,7 @@
       "architect": {}
     }
   },
-  "defaultProject": "pums",
+  "defaultProject": "projecunitmangment",
   "cli": {
     "packageManager": "npm"
   }

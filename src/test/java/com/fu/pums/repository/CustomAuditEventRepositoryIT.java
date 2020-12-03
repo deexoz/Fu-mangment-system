@@ -1,6 +1,6 @@
 package com.fu.pums.repository;
 
-import com.fu.pums.PumsApp;
+import com.fu.pums.ProjecunitmangmentApp;
 
 import com.fu.pums.config.Constants;
 import com.fu.pums.config.audit.AuditEventConverter;
@@ -28,7 +28,7 @@ import static com.fu.pums.repository.CustomAuditEventRepository.EVENT_DATA_COLUM
 /**
  * Integration tests for {@link CustomAuditEventRepository}.
  */
-@SpringBootTest(classes = PumsApp.class)
+@SpringBootTest(classes = ProjecunitmangmentApp.class)
 @Transactional
 public class CustomAuditEventRepositoryIT {
 

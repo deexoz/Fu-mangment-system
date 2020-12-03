@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { JhiDataUtils } from 'ng-jhipster';
 
-import { PumsTestModule } from '../../../test.module';
+import { ProjecunitmangmentTestModule } from '../../../test.module';
 import { FileDetailComponent } from 'app/entities/file/file-detail.component';
 import { File } from 'app/shared/model/file.model';
 
@@ -16,7 +16,7 @@ describe('Component Tests', () => {
 
     beforeEach(() => {
       TestBed.configureTestingModule({
-        imports: [PumsTestModule],
+        imports: [ProjecunitmangmentTestModule],
         declarations: [FileDetailComponent],
         providers: [{ provide: ActivatedRoute, useValue: route }],
       })
