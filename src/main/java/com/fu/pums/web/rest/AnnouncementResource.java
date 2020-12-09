@@ -2,6 +2,7 @@ package com.fu.pums.web.rest;
 
 import com.fu.pums.domain.Announcement;
 import com.fu.pums.service.AnnouncementService;
+import com.fu.pums.service.dto.FacultyAnnouncementDTO;
 import com.fu.pums.web.rest.errors.BadRequestAlertException;
 import com.fu.pums.service.dto.AnnouncementCriteria;
 import com.fu.pums.service.AnnouncementQueryService;

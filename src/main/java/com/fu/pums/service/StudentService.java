@@ -2,6 +2,7 @@ package com.fu.pums.service;
 
 import com.fu.pums.domain.Student;
 import com.fu.pums.repository.StudentRepository;
+import com.fu.pums.security.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,7 +51,6 @@ public class StudentService {
         return studentRepository.findAll(pageable);
     }
 
-
     /**
      * Get one student by id.
      *
@@ -63,6 +63,11 @@ public class StudentService {
         return studentRepository.findById(id);
     }
 
+    @Transactional(readOnly = true)
+    public Optional<Student> findByIndex(String index) {
+        return studentRepository.findByIndex(index);
+    }
+
     /**
      * Delete the student by id.
      *
@@ -71,5 +76,9 @@ public class StudentService {
     public void delete(Long id) {
         log.debug("Request to delete Student : {}", id);
         studentRepository.deleteById(id);
+    }
+    @Transactional(readOnly = true)
+    public Optional<Student> getCurrentStudent(){
+        return studentRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get());
     }
 }

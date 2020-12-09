@@ -1,5 +1,6 @@
 package com.fu.pums.service;
 
+import com.fu.pums.domain.Faculty;
 import com.fu.pums.domain.Observation;
 import com.fu.pums.repository.ObservationRepository;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -23,8 +25,11 @@ public class ObservationService {
 
     private final ObservationRepository observationRepository;
 
-    public ObservationService(ObservationRepository observationRepository) {
+    private final StudentService studentService;
+
+    public ObservationService(ObservationRepository observationRepository, StudentService studentService) {
         this.observationRepository = observationRepository;
+        this.studentService = studentService;
     }
 
     /**
@@ -49,7 +54,10 @@ public class ObservationService {
         log.debug("Request to get all Observations");
         return observationRepository.findAll(pageable);
     }
-
+    @Transactional(readOnly = true)
+    public Page<Observation> findByFaculty(Faculty faculty){
+        return observationRepository.findByFaculty(faculty);
+    }
 
     /**
      * Get one observation by id.
@@ -71,5 +79,9 @@ public class ObservationService {
     public void delete(Long id) {
         log.debug("Request to delete Observation : {}", id);
         observationRepository.deleteById(id);
+    }
+    @Transactional
+    public List<Observation> findByStudent(){
+        return observationRepository.findByStudent(studentService.getCurrentStudent().get());
     }
 }

@@ -1,7 +1,12 @@
 package com.fu.pums.web.rest;
 
+import com.fu.pums.domain.Faculty;
+import com.fu.pums.domain.File;
 import com.fu.pums.domain.Observation;
+import com.fu.pums.domain.Project;
+import com.fu.pums.service.FileService;
 import com.fu.pums.service.ObservationService;
+import com.fu.pums.service.ProjectService;
 import com.fu.pums.web.rest.errors.BadRequestAlertException;
 import com.fu.pums.service.dto.ObservationCriteria;
 import com.fu.pums.service.ObservationQueryService;
@@ -9,6 +14,7 @@ import com.fu.pums.service.ObservationQueryService;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
+import liquibase.pro.packaged.F;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,8 +28,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing {@link com.fu.pums.domain.Observation}.
@@ -43,9 +51,15 @@ public class ObservationResource {
 
     private final ObservationQueryService observationQueryService;
 
-    public ObservationResource(ObservationService observationService, ObservationQueryService observationQueryService) {
+    private final FileService fileService;
+
+    private final ProjectService projectService;
+
+    public ObservationResource(ProjectService projectService,ObservationService observationService, ObservationQueryService observationQueryService, FileService fileService) {
         this.observationService = observationService;
         this.observationQueryService = observationQueryService;
+        this.fileService = fileService;
+        this.projectService = projectService;
     }
 
     /**
@@ -66,7 +80,31 @@ public class ObservationResource {
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
+    @PostMapping("/projectObservation")
+    public ResponseEntity<Observation> createProjectObservation(@RequestBody Observation observation, File file, Project project) throws URISyntaxException {
+        if (file == null){
+            throw new BadRequestAlertException("file required", file.toString(),"should have a file");
+        }
+        if (observation == null){
+            throw new BadRequestAlertException("observation required", file.toString(),"should have a observation");
+        }
+        Optional<Project> returnedProject = projectService.findOne(project.getId());
+        if (returnedProject.isEmpty()){
+            throw new BadRequestAlertException("",returnedProject.toString(),"");
+        }
+        File newFile;
+        newFile = fileService.save(file);
 
+        Observation newObservation;
+        observation.setFile(newFile);
+        observation.project(project);
+        newObservation = observationService.save(observation);
+
+
+        return ResponseEntity.created(new URI("/api/projectObservation/" + newObservation.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, newObservation.getId().toString()))
+            .body(newObservation);
+    }
     /**
      * {@code PUT  /observations} : Updates an existing observation.
      *
@@ -114,7 +152,17 @@ public class ObservationResource {
         log.debug("REST request to count Observations by criteria: {}", criteria);
         return ResponseEntity.ok().body(observationQueryService.countByCriteria(criteria));
     }
-
+    @GetMapping("/getFacultyObservation")
+    public ResponseEntity<List<Observation>> getFacultyObservation(Faculty faculty){
+        Page<Observation> page = observationService.findByFaculty(faculty);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+    @GetMapping("/getObservationForStudent")
+    public ResponseEntity <List<Observation>> getObservationForLoginUser(){
+        List<Observation> observationList = observationService.findByStudent();
+        return  ResponseEntity.ok().body(observationList);
+    }
     /**
      * {@code GET  /observations/:id} : get the "id" observation.
      *
