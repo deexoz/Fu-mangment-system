@@ -1,5 +1,6 @@
 package com.fu.pums.service;
 
+import com.fu.pums.domain.Faculty;
 import com.fu.pums.domain.Project;
 import com.fu.pums.repository.ProjectRepository;
 import org.slf4j.Logger;
@@ -76,8 +77,13 @@ public class ProjectService {
         projectRepository.deleteById(id);
     }
 
-//    @Transactional(readOnly = true)
-//    public Optional<Project> findByStudent(){
-//        return projectRepository.findByStudent(studentService.getCurrentStudent().get());
-//    }
+    @Transactional(readOnly = true)
+    public Optional<Project> findByStudent() {
+        return projectRepository.findByStudents(studentService.getCurrentStudent().get());
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<Page<Project>> findAllByFaculty(Faculty faculty){
+        return projectRepository.findAllByFaculty(faculty);
+    }
 }

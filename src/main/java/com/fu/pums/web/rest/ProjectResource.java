@@ -20,9 +20,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.servlet.function.EntityResponse;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -183,6 +181,13 @@ public class ProjectResource {
         return ResponseEntity.ok().body(projectQueryService.countByCriteria(criteria));
     }
 
+
+    @GetMapping("/student-project")
+    public ResponseEntity<Optional<Project>>getStudentsProject(){
+        Optional<Project> project = projectService.findByStudent();
+        return ResponseEntity.ok().body(project);
+    }
+
     /**
      * {@code GET  /projects/:id} : get the "id" project.
      *
@@ -195,6 +200,13 @@ public class ProjectResource {
         log.debug("REST request to get Project : {}", id);
         Optional<Project> project = projectService.findOne(id);
         return ResponseUtil.wrapOrNotFound(project);
+    }
+    @GetMapping("/faculty-projects")
+    public ResponseEntity<List<Project>> getFacultyProjects(Faculty faculty){
+        Optional<Page<Project>> page = projectService.findAllByFaculty(faculty);
+          HttpHeaders headers = PaginationUtil
+            .generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page.get());
+        return ResponseEntity.ok().headers(headers).body(page.get().getContent());
     }
 
     /**

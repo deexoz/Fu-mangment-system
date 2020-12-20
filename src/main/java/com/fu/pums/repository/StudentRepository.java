@@ -13,7 +13,5 @@ import java.util.Optional;
 @SuppressWarnings("unused")
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long>, JpaSpecificationExecutor<Student> {
-    // Optional<Student> findByIndex(String index);
-
-//    Optional<Student> findOneByLogin(String login);
+    Optional<Student> findOneByIndex(String index);
 }

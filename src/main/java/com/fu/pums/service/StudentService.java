@@ -77,8 +77,9 @@ public class StudentService {
         log.debug("Request to delete Student : {}", id);
         studentRepository.deleteById(id);
     }
-//    @Transactional(readOnly = true)
-//    public Optional<Student> getCurrentStudent(){
-//        return studentRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get());
-//    }
+
+    @Transactional(readOnly = true)
+    public Optional<Student> getCurrentStudent() {
+        return studentRepository.findOneByIndex(SecurityUtils.getCurrentUserLogin().get());
+    }
 }
