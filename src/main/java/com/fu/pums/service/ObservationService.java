@@ -54,10 +54,10 @@ public class ObservationService {
         log.debug("Request to get all Observations");
         return observationRepository.findAll(pageable);
     }
-    @Transactional(readOnly = true)
-    public Page<Observation> findByFaculty(Faculty faculty){
-        return observationRepository.findByFaculty(faculty);
-    }
+    // @Transactional(readOnly = true)
+    // public Optional<List<Observation>> findByFaculty(Faculty faculty){
+    //     return observationRepository.findByFaculty(faculty);
+    // }
 
     /**
      * Get one observation by id.
@@ -80,8 +80,8 @@ public class ObservationService {
         log.debug("Request to delete Observation : {}", id);
         observationRepository.deleteById(id);
     }
-    @Transactional
-    public List<Observation> findByStudent(){
-        return observationRepository.findByStudent(studentService.getCurrentStudent().get());
-    }
+//    @Transactional
+//    public List<Observation> findByStudent(){
+//        return observationRepository.findByStudent(studentService.getCurrentStudent().get());
+//    }
 }

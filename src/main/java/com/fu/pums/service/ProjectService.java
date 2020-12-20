@@ -23,8 +23,11 @@ public class ProjectService {
 
     private final ProjectRepository projectRepository;
 
-    public ProjectService(ProjectRepository projectRepository) {
+    private final StudentService studentService ;
+
+    public ProjectService(ProjectRepository projectRepository ,StudentService studentService) {
         this.projectRepository = projectRepository;
+        this.studentService = studentService;
     }
 
     /**
@@ -72,4 +75,9 @@ public class ProjectService {
         log.debug("Request to delete Project : {}", id);
         projectRepository.deleteById(id);
     }
+
+//    @Transactional(readOnly = true)
+//    public Optional<Project> findByStudent(){
+//        return projectRepository.findByStudent(studentService.getCurrentStudent().get());
+//    }
 }

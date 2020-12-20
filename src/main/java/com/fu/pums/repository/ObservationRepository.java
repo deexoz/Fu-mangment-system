@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Spring Data  repository for the Observation entity.
@@ -16,6 +17,6 @@ import java.util.List;
 @SuppressWarnings("unused")
 @Repository
 public interface ObservationRepository extends JpaRepository<Observation, Long>, JpaSpecificationExecutor<Observation> {
-    Page<Observation> findByFaculty(Faculty faculty);
-    List<Observation> findByStudent(Student student);
+    // Optional <List<Observation>> findByFaculty(Faculty faculty);
+//    List<Observation> findByStudent(Student student);
 }

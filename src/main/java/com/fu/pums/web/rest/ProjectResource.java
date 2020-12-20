@@ -100,8 +100,8 @@ public class ProjectResource {
         project.setName(studentProjectDTO.getProjectName());
 
         studentProjectDTO.getStudents().forEach(student -> {
-            Optional<Student>  returnedStudent = this.studentService.findByIndex(student.getIndex());
-            if (returnedStudent.isPresent()){
+//            Optional<Student>  returnedStudent = this.studentService.findByIndex(student.getIndex());
+            if (student.getUser().getId() != null){
 
                 throw new BadRequestAlertException("student already have a project", studentProjectDTO.getStudents().toString(),
                     "tooMuchStudents");

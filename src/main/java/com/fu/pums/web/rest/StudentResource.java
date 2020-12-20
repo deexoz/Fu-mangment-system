@@ -1,6 +1,8 @@
 package com.fu.pums.web.rest;
 
+import com.fu.pums.domain.Project;
 import com.fu.pums.domain.Student;
+import com.fu.pums.service.ProjectService;
 import com.fu.pums.service.StudentService;
 import com.fu.pums.web.rest.errors.BadRequestAlertException;
 import com.fu.pums.service.dto.StudentCriteria;
@@ -15,7 +17,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,9 +44,12 @@ public class StudentResource {
 
     private final StudentQueryService studentQueryService;
 
-    public StudentResource(StudentService studentService, StudentQueryService studentQueryService) {
+    private final ProjectService projectService;
+
+    public StudentResource(StudentService studentService, StudentQueryService studentQueryService, ProjectService projectService) {
         this.studentService = studentService;
         this.studentQueryService = studentQueryService;
+        this.projectService = projectService;
     }
 
     /**
@@ -114,6 +118,12 @@ public class StudentResource {
         log.debug("REST request to count Students by criteria: {}", criteria);
         return ResponseEntity.ok().body(studentQueryService.countByCriteria(criteria));
     }
+
+//    @GetMapping("/student-project")
+//    public ResponseEntity<Optional<Project>> getStudentProject(){
+//        Optional<Project> project = projectService.findByStudent();
+//        return ResponseEntity.ok().body(project);
+//    }
 
     /**
      * {@code GET  /students/:id} : get the "id" student.

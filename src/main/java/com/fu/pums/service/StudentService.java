@@ -63,10 +63,10 @@ public class StudentService {
         return studentRepository.findById(id);
     }
 
-    @Transactional(readOnly = true)
-    public Optional<Student> findByIndex(String index) {
-        return studentRepository.findByIndex(index);
-    }
+    // @Transactional(readOnly = true)
+    // public Optional<Student> findByIndex(String index) {
+    //     return studentRepository.findByIndex(index);
+    // }
 
     /**
      * Delete the student by id.
@@ -77,8 +77,8 @@ public class StudentService {
         log.debug("Request to delete Student : {}", id);
         studentRepository.deleteById(id);
     }
-    @Transactional(readOnly = true)
-    public Optional<Student> getCurrentStudent(){
-        return studentRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get());
-    }
+//    @Transactional(readOnly = true)
+//    public Optional<Student> getCurrentStudent(){
+//        return studentRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get());
+//    }
 }

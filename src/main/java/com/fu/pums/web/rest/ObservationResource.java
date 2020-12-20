@@ -89,7 +89,7 @@ public class ObservationResource {
             throw new BadRequestAlertException("observation required", file.toString(),"should have a observation");
         }
         Optional<Project> returnedProject = projectService.findOne(project.getId());
-        if (returnedProject.isEmpty()){
+        if (!returnedProject.isPresent()){
             throw new BadRequestAlertException("",returnedProject.toString(),"");
         }
         File newFile;
@@ -152,17 +152,17 @@ public class ObservationResource {
         log.debug("REST request to count Observations by criteria: {}", criteria);
         return ResponseEntity.ok().body(observationQueryService.countByCriteria(criteria));
     }
-    @GetMapping("/getFacultyObservation")
-    public ResponseEntity<List<Observation>> getFacultyObservation(Faculty faculty){
-        Page<Observation> page = observationService.findByFaculty(faculty);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
-    @GetMapping("/getObservationForStudent")
-    public ResponseEntity <List<Observation>> getObservationForLoginUser(){
-        List<Observation> observationList = observationService.findByStudent();
-        return  ResponseEntity.ok().body(observationList);
-    }
+    // @GetMapping("/getFacultyObservation")
+    // public ResponseEntity<Optional<List<Observation>>> getFacultyObservation(Faculty faculty){
+    //     Optional<List<Observation>> page = observationService.findByFaculty(faculty);
+    //     // HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page.get());
+    //     return ResponseEntity.ok().body(page)
+//    }
+//    @GetMapping("/getObservationForStudent")
+//    public ResponseEntity <List<Observation>> getObservationForLoginUser(){
+//        List<Observation> observationList = observationService.findByStudent();
+//        return  ResponseEntity.ok().body(observationList);
+//    }
     /**
      * {@code GET  /observations/:id} : get the "id" observation.
      *
