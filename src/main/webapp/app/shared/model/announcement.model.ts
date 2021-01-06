@@ -6,9 +6,10 @@ export interface IAnnouncement {
   id?: number;
   title?: string;
   content?: any;
-  announcmentType?: AnnouncementType;
+  announcementType?: AnnouncementType;
   startDate?: Moment;
   endDate?: Moment;
+  open?: boolean;
   faculty?: IFaculty;
 }
 
@@ -17,9 +18,12 @@ export class Announcement implements IAnnouncement {
     public id?: number,
     public title?: string,
     public content?: any,
-    public announcmentType?: AnnouncementType,
+    public announcementType?: AnnouncementType,
     public startDate?: Moment,
     public endDate?: Moment,
+    public open?: boolean,
     public faculty?: IFaculty
-  ) {}
+  ) {
+    this.open = this.open || false;
+  }
 }

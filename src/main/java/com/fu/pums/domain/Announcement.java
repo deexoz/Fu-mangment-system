@@ -33,14 +33,17 @@ public class Announcement implements Serializable {
     private String content;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "announcment_type")
-    private AnnouncementType announcmentType;
+    @Column(name = "announcement_type")
+    private AnnouncementType announcementType;
 
     @Column(name = "start_date")
     private LocalDate startDate;
 
     @Column(name = "end_date")
     private LocalDate endDate;
+
+    @Column(name = "open")
+    private Boolean open;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "announcments", allowSetters = true)
@@ -81,17 +84,17 @@ public class Announcement implements Serializable {
         this.content = content;
     }
 
-    public AnnouncementType getAnnouncmentType() {
-        return announcmentType;
+    public AnnouncementType getAnnouncementType() {
+        return announcementType;
     }
 
-    public Announcement announcmentType(AnnouncementType announcmentType) {
-        this.announcmentType = announcmentType;
+    public Announcement announcementType(AnnouncementType announcementType) {
+        this.announcementType = announcementType;
         return this;
     }
 
-    public void setAnnouncmentType(AnnouncementType announcmentType) {
-        this.announcmentType = announcmentType;
+    public void setAnnouncementType(AnnouncementType announcementType) {
+        this.announcementType = announcementType;
     }
 
     public LocalDate getStartDate() {
@@ -118,6 +121,19 @@ public class Announcement implements Serializable {
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
+    }
+
+    public Boolean isOpen() {
+        return open;
+    }
+
+    public Announcement open(Boolean open) {
+        this.open = open;
+        return this;
+    }
+
+    public void setOpen(Boolean open) {
+        this.open = open;
     }
 
     public Faculty getFaculty() {
@@ -157,9 +173,10 @@ public class Announcement implements Serializable {
             "id=" + getId() +
             ", title='" + getTitle() + "'" +
             ", content='" + getContent() + "'" +
-            ", announcmentType='" + getAnnouncmentType() + "'" +
+            ", announcementType='" + getAnnouncementType() + "'" +
             ", startDate='" + getStartDate() + "'" +
             ", endDate='" + getEndDate() + "'" +
+            ", open='" + isOpen() + "'" +
             "}";
     }
 }

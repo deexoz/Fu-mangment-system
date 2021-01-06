@@ -88,14 +88,17 @@ public class AnnouncementQueryService extends QueryService<Announcement> {
             if (criteria.getTitle() != null) {
                 specification = specification.and(buildStringSpecification(criteria.getTitle(), Announcement_.title));
             }
-            if (criteria.getAnnouncmentType() != null) {
-                specification = specification.and(buildSpecification(criteria.getAnnouncmentType(), Announcement_.announcmentType));
+            if (criteria.getAnnouncementType() != null) {
+                specification = specification.and(buildSpecification(criteria.getAnnouncementType(), Announcement_.announcementType));
             }
             if (criteria.getStartDate() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getStartDate(), Announcement_.startDate));
             }
             if (criteria.getEndDate() != null) {
                 specification = specification.and(buildRangeSpecification(criteria.getEndDate(), Announcement_.endDate));
+            }
+            if (criteria.getOpen() != null) {
+                specification = specification.and(buildSpecification(criteria.getOpen(), Announcement_.open));
             }
             if (criteria.getFacultyId() != null) {
                 specification = specification.and(buildSpecification(criteria.getFacultyId(),

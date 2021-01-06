@@ -48,11 +48,13 @@ public class AnnouncementCriteria implements Serializable, Criteria {
 
     private StringFilter title;
 
-    private AnnouncementTypeFilter announcmentType;
+    private AnnouncementTypeFilter announcementType;
 
     private LocalDateFilter startDate;
 
     private LocalDateFilter endDate;
+
+    private BooleanFilter open;
 
     private LongFilter facultyId;
 
@@ -62,9 +64,10 @@ public class AnnouncementCriteria implements Serializable, Criteria {
     public AnnouncementCriteria(AnnouncementCriteria other) {
         this.id = other.id == null ? null : other.id.copy();
         this.title = other.title == null ? null : other.title.copy();
-        this.announcmentType = other.announcmentType == null ? null : other.announcmentType.copy();
+        this.announcementType = other.announcementType == null ? null : other.announcementType.copy();
         this.startDate = other.startDate == null ? null : other.startDate.copy();
         this.endDate = other.endDate == null ? null : other.endDate.copy();
+        this.open = other.open == null ? null : other.open.copy();
         this.facultyId = other.facultyId == null ? null : other.facultyId.copy();
     }
 
@@ -89,12 +92,12 @@ public class AnnouncementCriteria implements Serializable, Criteria {
         this.title = title;
     }
 
-    public AnnouncementTypeFilter getAnnouncmentType() {
-        return announcmentType;
+    public AnnouncementTypeFilter getAnnouncementType() {
+        return announcementType;
     }
 
-    public void setAnnouncmentType(AnnouncementTypeFilter announcmentType) {
-        this.announcmentType = announcmentType;
+    public void setAnnouncementType(AnnouncementTypeFilter announcementType) {
+        this.announcementType = announcementType;
     }
 
     public LocalDateFilter getStartDate() {
@@ -111,6 +114,14 @@ public class AnnouncementCriteria implements Serializable, Criteria {
 
     public void setEndDate(LocalDateFilter endDate) {
         this.endDate = endDate;
+    }
+
+    public BooleanFilter getOpen() {
+        return open;
+    }
+
+    public void setOpen(BooleanFilter open) {
+        this.open = open;
     }
 
     public LongFilter getFacultyId() {
@@ -134,9 +145,10 @@ public class AnnouncementCriteria implements Serializable, Criteria {
         return
             Objects.equals(id, that.id) &&
             Objects.equals(title, that.title) &&
-            Objects.equals(announcmentType, that.announcmentType) &&
+            Objects.equals(announcementType, that.announcementType) &&
             Objects.equals(startDate, that.startDate) &&
             Objects.equals(endDate, that.endDate) &&
+            Objects.equals(open, that.open) &&
             Objects.equals(facultyId, that.facultyId);
     }
 
@@ -145,9 +157,10 @@ public class AnnouncementCriteria implements Serializable, Criteria {
         return Objects.hash(
         id,
         title,
-        announcmentType,
+        announcementType,
         startDate,
         endDate,
+        open,
         facultyId
         );
     }
@@ -158,9 +171,10 @@ public class AnnouncementCriteria implements Serializable, Criteria {
         return "AnnouncementCriteria{" +
                 (id != null ? "id=" + id + ", " : "") +
                 (title != null ? "title=" + title + ", " : "") +
-                (announcmentType != null ? "announcmentType=" + announcmentType + ", " : "") +
+                (announcementType != null ? "announcementType=" + announcementType + ", " : "") +
                 (startDate != null ? "startDate=" + startDate + ", " : "") +
                 (endDate != null ? "endDate=" + endDate + ", " : "") +
+                (open != null ? "open=" + open + ", " : "") +
                 (facultyId != null ? "facultyId=" + facultyId + ", " : "") +
             "}";
     }

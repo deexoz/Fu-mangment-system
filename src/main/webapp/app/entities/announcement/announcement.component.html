@@ -25,9 +25,10 @@
                     <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="title"><span jhiTranslate="projecunitmangmentApp.announcement.title">Title</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="content"><span jhiTranslate="projecunitmangmentApp.announcement.content">Content</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="announcmentType"><span jhiTranslate="projecunitmangmentApp.announcement.announcmentType">Announcment Type</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="announcementType"><span jhiTranslate="projecunitmangmentApp.announcement.announcementType">Announcement Type</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="startDate"><span jhiTranslate="projecunitmangmentApp.announcement.startDate">Start Date</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="endDate"><span jhiTranslate="projecunitmangmentApp.announcement.endDate">End Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="open"><span jhiTranslate="projecunitmangmentApp.announcement.open">Open</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="faculty.name"><span jhiTranslate="projecunitmangmentApp.announcement.faculty">Faculty</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
@@ -37,9 +38,10 @@
                     <td><a [routerLink]="['/announcement', announcement.id, 'view']">{{ announcement.id }}</a></td>
                     <td>{{ announcement.title }}</td>
                     <td>{{ announcement.content }}</td>
-                    <td jhiTranslate="{{ 'projecunitmangmentApp.AnnouncementType.' + announcement.announcmentType }}">{{ announcement.announcmentType }}</td>
+                    <td jhiTranslate="{{ 'projecunitmangmentApp.AnnouncementType.' + announcement.announcementType }}">{{ announcement.announcementType }}</td>
                     <td>{{ announcement.startDate | date:'mediumDate' }}</td>
                     <td>{{ announcement.endDate | date:'mediumDate' }}</td>
+                    <td>{{ announcement.open }}</td>
                     <td>
                         <div *ngIf="announcement.faculty">
                             <a [routerLink]="['/faculty', announcement.faculty?.id, 'view']" >{{ announcement.faculty?.name }}</a>

@@ -22,13 +22,16 @@
             <column name="content" type="${clobType}">
                 <constraints nullable="true" />
             </column>
-            <column name="announcment_type" type="varchar(255)">
+            <column name="announcement_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="start_date" type="date">
                 <constraints nullable="true" />
             </column>
             <column name="end_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="open" type="boolean">
                 <constraints nullable="true" />
             </column>
             <column name="faculty_id" type="bigint">
@@ -59,9 +62,10 @@
             <column name="id" type="numeric"/>
             <column name="title" type="string"/>
             <column name="content" type="clob"/>
-            <column name="announcment_type" type="string"/>
+            <column name="announcement_type" type="string"/>
             <column name="start_date" type="date"/>
             <column name="end_date" type="date"/>
+            <column name="open" type="boolean"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

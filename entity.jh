@@ -6,7 +6,7 @@ entity Student {
 	//one faculty
     //one project
     }
-    
+
 entity Project {
 	name String,
     details TextBlob,
@@ -46,9 +46,10 @@ enum AnnouncementType {
 entity Announcement{
 	title String
 	content TextBlob,
-    announcmentType AnnouncementType,
+    announcementType AnnouncementType,
     startDate LocalDate,
     endDate LocalDate,
+    open Boolean
     //faculty
   }
 
@@ -70,7 +71,7 @@ entity File {
 }
 
 relationship OneToOne {
-	Student{user(login)} to User{student(index)}
+	Student{user(login)} to User{student(index)} with jpaDerivedIdentifier
     Observation{file(name)} to File{observation(name)}
 }
 
@@ -90,4 +91,4 @@ relationship ManyToMany {
 
 paginate * with pagination
 service * with serviceClass
-filter * 
+filter *

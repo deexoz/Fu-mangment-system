@@ -11,7 +11,7 @@
       "fieldTypeBlobContent": "text"
     },
     {
-      "fieldName": "announcmentType",
+      "fieldName": "announcementType",
       "fieldType": "AnnouncementType",
       "fieldValues": "SUBMISSION,DISCUSSIONS,OBSERVATIONS,OTHERS"
     },
@@ -22,6 +22,10 @@
     {
       "fieldName": "endDate",
       "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "open",
+      "fieldType": "Boolean"
     }
   ],
   "relationships": [

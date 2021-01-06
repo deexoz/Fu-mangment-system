@@ -21,7 +21,8 @@
       "otherEntityRelationshipName": "student",
       "relationshipName": "user",
       "otherEntityField": "login",
-      "ownerSide": true
+      "ownerSide": true,
+      "useJPADerivedIdentifier": true
     },
     {
       "relationshipType": "many-to-one",

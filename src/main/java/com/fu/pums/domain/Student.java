@@ -19,7 +19,6 @@ public class Student implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "jhi_index")
@@ -32,7 +31,9 @@ public class Student implements Serializable {
     private String phone;
 
     @OneToOne
-    @JoinColumn(unique = true)
+
+    @MapsId
+    @JoinColumn(name = "id")
     private User user;
 
     @ManyToOne

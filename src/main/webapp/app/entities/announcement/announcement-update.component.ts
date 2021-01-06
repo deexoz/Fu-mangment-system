@@ -26,9 +26,10 @@ export class AnnouncementUpdateComponent implements OnInit {
     id: [],
     title: [],
     content: [],
-    announcmentType: [],
+    announcementType: [],
     startDate: [],
     endDate: [],
+    open: [],
     faculty: [],
   });
 
@@ -54,9 +55,10 @@ export class AnnouncementUpdateComponent implements OnInit {
       id: announcement.id,
       title: announcement.title,
       content: announcement.content,
-      announcmentType: announcement.announcmentType,
+      announcementType: announcement.announcementType,
       startDate: announcement.startDate,
       endDate: announcement.endDate,
+      open: announcement.open,
       faculty: announcement.faculty,
     });
   }
@@ -97,9 +99,10 @@ export class AnnouncementUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       title: this.editForm.get(['title'])!.value,
       content: this.editForm.get(['content'])!.value,
-      announcmentType: this.editForm.get(['announcmentType'])!.value,
+      announcementType: this.editForm.get(['announcementType'])!.value,
       startDate: this.editForm.get(['startDate'])!.value,
       endDate: this.editForm.get(['endDate'])!.value,
+      open: this.editForm.get(['open'])!.value,
       faculty: this.editForm.get(['faculty'])!.value,
     };
   }

@@ -18,9 +18,10 @@
       },
       "title": "Title",
       "content": "Content",
-      "announcmentType": "Announcment Type",
+      "announcementType": "Announcement Type",
       "startDate": "Start Date",
       "endDate": "End Date",
+      "open": "Open",
       "faculty": "Faculty"
     }
   }
