@@ -202,11 +202,9 @@ public class ProjectResource {
         return ResponseUtil.wrapOrNotFound(project);
     }
     @GetMapping("/faculty-projects")
-    public ResponseEntity<List<Project>> getFacultyProjects(Faculty faculty){
-        Optional<Page<Project>> page = projectService.findAllByFaculty(faculty);
-          HttpHeaders headers = PaginationUtil
-            .generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page.get());
-        return ResponseEntity.ok().headers(headers).body(page.get().getContent());
+    public ResponseEntity<Optional<List<Project>>> getFacultyProjects(Faculty faculty){
+        Optional<List<Project>> listProject = projectService.findAllByFaculty(faculty);
+        return ResponseEntity.ok().body(listProject);
     }
 
     /**

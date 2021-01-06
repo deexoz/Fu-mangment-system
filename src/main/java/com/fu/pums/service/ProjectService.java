@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -83,7 +84,7 @@ public class ProjectService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<Page<Project>> findAllByFaculty(Faculty faculty){
+    public Optional<List<Project>> findAllByFaculty(Faculty faculty){
         return projectRepository.findAllByFaculty(faculty);
     }
 }

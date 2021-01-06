@@ -5,9 +5,11 @@ import com.fu.pums.domain.Project;
 
 import com.fu.pums.domain.Student;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -17,6 +19,6 @@ import java.util.Optional;
 @Repository
 public interface ProjectRepository extends JpaRepository<Project, Long>, JpaSpecificationExecutor<Project> {
     Optional<Project> findByStudents(Student students);
-    Optional<Page<Project>> findAllByFaculty (Faculty faculty);
+    Optional<List<Project>> findAllByFaculty (Faculty faculty);
 
 }
