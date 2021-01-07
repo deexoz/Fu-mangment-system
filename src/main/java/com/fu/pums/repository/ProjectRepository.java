@@ -20,5 +20,6 @@ import java.util.Optional;
 public interface ProjectRepository extends JpaRepository<Project, Long>, JpaSpecificationExecutor<Project> {
     Optional<Project> findByStudents(Student students);
     Optional<List<Project>> findAllByFaculty (Faculty faculty);
+    Optional<Project> findOneByStudents(Student student);
 
 }

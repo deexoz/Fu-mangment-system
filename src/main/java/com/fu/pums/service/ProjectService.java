@@ -2,6 +2,7 @@ package com.fu.pums.service;
 
 import com.fu.pums.domain.Faculty;
 import com.fu.pums.domain.Project;
+import com.fu.pums.domain.Student;
 import com.fu.pums.repository.ProjectRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -79,12 +80,14 @@ public class ProjectService {
     }
 
     @Transactional(readOnly = true)
-    public Optional<Project> findByStudent() {
-        return projectRepository.findByStudents(studentService.getCurrentStudent().get());
+    public Optional<Project> findOneByStudent(Student student) {
+        return projectRepository.findOneByStudents(student);
     }
 
     @Transactional(readOnly = true)
     public Optional<List<Project>> findAllByFaculty(Faculty faculty){
         return projectRepository.findAllByFaculty(faculty);
     }
+
+
 }

@@ -2,6 +2,7 @@ package com.fu.pums.service;
 
 import com.fu.pums.domain.Student;
 import com.fu.pums.repository.StudentRepository;
+import com.fu.pums.repository.UserRepository;
 import com.fu.pums.security.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,18 +25,24 @@ public class StudentService {
 
     private final StudentRepository studentRepository;
 
-    public StudentService(StudentRepository studentRepository) {
+    private final UserRepository userRepository;
+
+    public StudentService(StudentRepository studentRepository, UserRepository userRepository) {
         this.studentRepository = studentRepository;
+        this.userRepository = userRepository;
     }
 
     /**
      * Save a student.
      *
      * @param student the entity to save.
-     * @return the persisted entity.
+     * @return the persisted entity.org.hibernate.PersistentObjectException: detached entity passed to persist: com.fu.pums.domain.User
      */
     public Student save(Student student) {
         log.debug("Request to save Student : {}", student);
+        Long userId = student.getUser().getId();
+        userRepository.findById(userId).ifPresent(student::user);
+
         return studentRepository.save(student);
     }
 
@@ -80,6 +87,6 @@ public class StudentService {
 
     @Transactional(readOnly = true)
     public Optional<Student> getCurrentStudent() {
-        return studentRepository.findOneByIndex(SecurityUtils.getCurrentUserLogin().get());
+        return studentRepository.findById(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get().getId());
     }
 }

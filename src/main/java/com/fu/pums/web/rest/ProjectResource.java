@@ -2,6 +2,7 @@ package com.fu.pums.web.rest;
 
 import com.fu.pums.domain.*;
 import com.fu.pums.security.AuthoritiesConstants;
+import com.fu.pums.security.SecurityUtils;
 import com.fu.pums.service.ProjectService;
 import com.fu.pums.service.StudentService;
 import com.fu.pums.service.UserService;
@@ -11,6 +12,7 @@ import com.fu.pums.web.rest.errors.BadRequestAlertException;
 import com.fu.pums.service.dto.ProjectCriteria;
 import com.fu.pums.service.ProjectQueryService;
 
+import io.github.jhipster.service.filter.LongFilter;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -184,7 +186,8 @@ public class ProjectResource {
 
     @GetMapping("/student-project")
     public ResponseEntity<Optional<Project>>getStudentsProject(){
-        Optional<Project> project = projectService.findByStudent();
+        Optional<Student> student = studentService.getCurrentStudent();
+        Optional<Project> project = projectService.findOneByStudent(student.get());
         return ResponseEntity.ok().body(project);
     }
 
@@ -220,5 +223,21 @@ public class ProjectResource {
         return ResponseEntity.noContent()
                 .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
                 .build();
+    }
+
+    private ProjectCriteria limitToUserData(ProjectCriteria criteria) {
+        if (!SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            Optional<Student> student = studentService.getCurrentStudent();
+
+            if (!student.isPresent()) {
+                throw new BadRequestAlertException("No profile detected", ENTITY_NAME, "noprofile");
+            }
+
+            Long profileId = student.get().getId();
+            LongFilter longFilter = new LongFilter();
+            longFilter.setEquals(profileId);
+            criteria.setStudentsId(longFilter);
+        }
+        return criteria;
     }
 }
