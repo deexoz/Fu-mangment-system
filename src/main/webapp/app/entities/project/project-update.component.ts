@@ -13,8 +13,10 @@ import { IFaculty } from 'app/shared/model/faculty.model';
 import { FacultyService } from 'app/entities/faculty/faculty.service';
 import { ISupervisor } from 'app/shared/model/supervisor.model';
 import { SupervisorService } from 'app/entities/supervisor/supervisor.service';
+import { IBatch } from 'app/shared/model/batch.model';
+import { BatchService } from 'app/entities/batch/batch.service';
 
-type SelectableEntity = IFaculty | ISupervisor;
+type SelectableEntity = IFaculty | ISupervisor | IBatch;
 
 @Component({
   selector: 'jhi-project-update',
@@ -24,6 +26,7 @@ export class ProjectUpdateComponent implements OnInit {
   isSaving = false;
   faculties: IFaculty[] = [];
   supervisors: ISupervisor[] = [];
+  batches: IBatch[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -33,6 +36,7 @@ export class ProjectUpdateComponent implements OnInit {
     problems: [],
     faculty: [],
     supervisor: [],
+    batch: [],
   });
 
   constructor(
@@ -41,6 +45,7 @@ export class ProjectUpdateComponent implements OnInit {
     protected projectService: ProjectService,
     protected facultyService: FacultyService,
     protected supervisorService: SupervisorService,
+    protected batchService: BatchService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -52,6 +57,8 @@ export class ProjectUpdateComponent implements OnInit {
       this.facultyService.query().subscribe((res: HttpResponse<IFaculty[]>) => (this.faculties = res.body || []));
 
       this.supervisorService.query().subscribe((res: HttpResponse<ISupervisor[]>) => (this.supervisors = res.body || []));
+
+      this.batchService.query().subscribe((res: HttpResponse<IBatch[]>) => (this.batches = res.body || []));
     });
   }
 
@@ -64,6 +71,7 @@ export class ProjectUpdateComponent implements OnInit {
       problems: project.problems,
       faculty: project.faculty,
       supervisor: project.supervisor,
+      batch: project.batch,
     });
   }
 
@@ -107,6 +115,7 @@ export class ProjectUpdateComponent implements OnInit {
       problems: this.editForm.get(['problems'])!.value,
       faculty: this.editForm.get(['faculty'])!.value,
       supervisor: this.editForm.get(['supervisor'])!.value,
+      batch: this.editForm.get(['batch'])!.value,
     };
   }
 

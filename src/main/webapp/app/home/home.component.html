@@ -4,25 +4,58 @@
     </div>
 
     <div class="col-md-9">
-        <h1 class="display-4" >Welcome to Future Project Management System!</h1>
+        <h1 class="display-4">Welcome to Future Project Management System!</h1>
 
-<!--        <p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>-->
 
-        <div [ngSwitch]="isAuthenticated()">
-            <div class="alert alert-success" *ngSwitchCase="true">
-                <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message"
-                    [translateValues]="{ username: account.login }">You are logged in as user "{{ account.login }}".</span>
-            </div>
+        <div [ngSwitch]="isAuthenticated()" class="row">
+
+            <a class="dropdown-item" routerLink="student" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.student">Student</span>
+            </a>
+
+            <a class="dropdown-item" routerLink="project" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.project">Project</span>
+            </a>
+            <a class="dropdown-item" routerLink="supervisor" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.supervisor">Supervisor</span>
+            </a>
+
+            <a class="dropdown-item" routerLink="faculty" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.faculty">Faculty</span>
+            </a>
+
+            <a class="dropdown-item" routerLink="announcement" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.announcement">Announcement</span>
+            </a>
+            <a class="dropdown-item" routerLink="observation" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.observation">Observation</span>
+            </a>
+
+            <a class="dropdown-item" routerLink="file" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.entities.file">File</span>
+            </a>
+
 
             <div class="alert alert-warning" *ngSwitchCase="false">
                 <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
-                <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign in</a>
+                <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">sign
+                    in</a>
             </div>
 
-<!--            <div class="alert alert-warning" *ngSwitchCase="false">-->
-<!--                <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>&nbsp;-->
-<!--                <a class="alert-link" routerLink="account/register" jhiTranslate="global.messages.info.register.link">Register a new account</a>-->
-<!--            </div>-->
         </div>
     </div>
 </div>

@@ -64,6 +64,9 @@ public class CacheConfiguration {
             createCache(cm, com.fu.pums.domain.Announcement.class.getName());
             createCache(cm, com.fu.pums.domain.Observation.class.getName());
             createCache(cm, com.fu.pums.domain.File.class.getName());
+            createCache(cm, com.fu.pums.domain.Faculty.class.getName() + ".announcements");
+            createCache(cm, com.fu.pums.domain.Batch.class.getName());
+            createCache(cm, com.fu.pums.domain.Batch.class.getName() + ".projects");
             // jhipster-needle-ehcache-add-entry
         };
     }

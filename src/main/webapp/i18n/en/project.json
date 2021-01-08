@@ -24,7 +24,8 @@
       "files": "Files",
       "observations": "Observations",
       "faculty": "Faculty",
-      "supervisor": "Supervisor"
+      "supervisor": "Supervisor",
+      "batch": "Batch"
     }
   }
 }

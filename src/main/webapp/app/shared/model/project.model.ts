@@ -3,6 +3,7 @@ import { IFile } from 'app/shared/model/file.model';
 import { IObservation } from 'app/shared/model/observation.model';
 import { IFaculty } from 'app/shared/model/faculty.model';
 import { ISupervisor } from 'app/shared/model/supervisor.model';
+import { IBatch } from 'app/shared/model/batch.model';
 
 export interface IProject {
   id?: number;
@@ -15,6 +16,7 @@ export interface IProject {
   observations?: IObservation[];
   faculty?: IFaculty;
   supervisor?: ISupervisor;
+  batch?: IBatch;
 }
 
 export class Project implements IProject {
@@ -28,6 +30,7 @@ export class Project implements IProject {
     public files?: IFile[],
     public observations?: IObservation[],
     public faculty?: IFaculty,
-    public supervisor?: ISupervisor
+    public supervisor?: ISupervisor,
+    public batch?: IBatch
   ) {}
 }

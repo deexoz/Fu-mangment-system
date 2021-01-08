@@ -36,6 +36,12 @@
                         <a [routerLink]="['/supervisor', project.supervisor?.id, 'view']">{{ project.supervisor?.fullName }}</a>
                     </div>
                 </dd>
+                <dt><span jhiTranslate="projecunitmangmentApp.project.batch">Batch</span></dt>
+                <dd>
+                    <div *ngIf="project.batch">
+                        <a [routerLink]="['/batch', project.batch?.id, 'view']">{{ project.batch?.year }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

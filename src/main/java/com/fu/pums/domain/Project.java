@@ -59,6 +59,10 @@ public class Project implements Serializable {
     @JsonIgnoreProperties(value = "projects", allowSetters = true)
     private Supervisor supervisor;
 
+    @ManyToOne
+    @JsonIgnoreProperties(value = "projects", allowSetters = true)
+    private Batch batch;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -219,6 +223,19 @@ public class Project implements Serializable {
 
     public void setSupervisor(Supervisor supervisor) {
         this.supervisor = supervisor;
+    }
+
+    public Batch getBatch() {
+        return batch;
+    }
+
+    public Project batch(Batch batch) {
+        this.batch = batch;
+        return this;
+    }
+
+    public void setBatch(Batch batch) {
+        this.batch = batch;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

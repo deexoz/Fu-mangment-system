@@ -39,7 +39,7 @@ public class Faculty implements Serializable {
 
     @OneToMany(mappedBy = "faculty")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<Announcement> announcments = new HashSet<>();
+    private Set<Announcement> announcements = new HashSet<>();
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -133,29 +133,29 @@ public class Faculty implements Serializable {
         this.projects = projects;
     }
 
-    public Set<Announcement> getAnnouncments() {
-        return announcments;
+    public Set<Announcement> getAnnouncements() {
+        return announcements;
     }
 
-    public Faculty announcments(Set<Announcement> announcements) {
-        this.announcments = announcements;
+    public Faculty announcements(Set<Announcement> announcements) {
+        this.announcements = announcements;
         return this;
     }
 
-    public Faculty addAnnouncments(Announcement announcement) {
-        this.announcments.add(announcement);
+    public Faculty addAnnouncements(Announcement announcement) {
+        this.announcements.add(announcement);
         announcement.setFaculty(this);
         return this;
     }
 
-    public Faculty removeAnnouncments(Announcement announcement) {
-        this.announcments.remove(announcement);
+    public Faculty removeAnnouncements(Announcement announcement) {
+        this.announcements.remove(announcement);
         announcement.setFaculty(null);
         return this;
     }
 
-    public void setAnnouncments(Set<Announcement> announcements) {
-        this.announcments = announcements;
+    public void setAnnouncements(Set<Announcement> announcements) {
+        this.announcements = announcements;
     }
 
     public Set<Supervisor> getSupervisors() {

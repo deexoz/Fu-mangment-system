@@ -1,7 +1,8 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-student-heading" jhiTranslate="projecunitmangmentApp.student.home.createOrEditLabel">Create or edit a Student</h2>
+            <h2 id="jhi-student-heading" jhiTranslate="projecunitmangmentApp.student.home.createOrEditLabel">Create or
+                edit a Student</h2>
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
@@ -12,44 +13,55 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.student.index" for="field_index">Index</label>
-                    <input type="text" class="form-control" name="index" id="field_index"
-                           formControlName="index"/>
+                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.student.index"
+                        for="field_index">Index</label>
+                    <input type="text" class="form-control" name="index" id="field_index" formControlName="index" />
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.student.fullNameArabic" for="field_fullNameArabic">Full Name Arabic</label>
+                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.student.fullNameArabic"
+                        for="field_fullNameArabic">Full Name Arabic</label>
                     <input type="text" class="form-control" name="fullNameArabic" id="field_fullNameArabic"
-                           formControlName="fullNameArabic"/>
+                        formControlName="fullNameArabic" />
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.student.phone" for="field_phone">Phone</label>
-                    <input type="text" class="form-control" name="phone" id="field_phone"
-                           formControlName="phone"/>
+                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.student.phone"
+                        for="field_phone">Phone</label>
+                    <input type="text" class="form-control" name="phone" id="field_phone" formControlName="phone" />
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.student.user" for="field_user">User</label>
+                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.student.user"
+                        for="field_user">User</label>
                     <select class="form-control" id="field_user" name="user" formControlName="user">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption" *ngFor="let userOption of users; trackBy: trackById">{{ userOption.login }}</option>
+                        <option
+                            [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption"
+                            *ngFor="let userOption of users; trackBy: trackById">{{ userOption.login }}</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.student.faculty" for="field_faculty">Faculty</label>
+                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.student.faculty"
+                        for="field_faculty">Faculty</label>
                     <select class="form-control" id="field_faculty" name="faculty" formControlName="faculty">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="facultyOption.id === editForm.get('faculty')!.value?.id ? editForm.get('faculty')!.value : facultyOption" *ngFor="let facultyOption of faculties; trackBy: trackById">{{ facultyOption.name }}</option>
+                        <option
+                            [ngValue]="facultyOption.id === editForm.get('faculty')!.value?.id ? editForm.get('faculty')!.value : facultyOption"
+                            *ngFor="let facultyOption of faculties; trackBy: trackById">{{ facultyOption.name }}
+                        </option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.student.project" for="field_project">Project</label>
+                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.student.project"
+                        for="field_project">Project</label>
                     <select class="form-control" id="field_project" name="project" formControlName="project">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="projectOption.id === editForm.get('project')!.value?.id ? editForm.get('project')!.value : projectOption" *ngFor="let projectOption of projects; trackBy: trackById">{{ projectOption.name }}</option>
+                        <option
+                            [ngValue]="projectOption.id === editForm.get('project')!.value?.id ? editForm.get('project')!.value : projectOption"
+                            *ngFor="let projectOption of projects; trackBy: trackById">{{ projectOption.name }}</option>
                     </select>
                 </div>
             </div>
@@ -59,7 +71,8 @@
                     <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
 
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
+                    class="btn btn-primary">
                     <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>

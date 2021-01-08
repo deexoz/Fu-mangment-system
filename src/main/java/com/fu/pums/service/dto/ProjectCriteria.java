@@ -38,6 +38,8 @@ public class ProjectCriteria implements Serializable, Criteria {
 
     private LongFilter supervisorId;
 
+    private LongFilter batchId;
+
     public ProjectCriteria() {
     }
 
@@ -49,6 +51,7 @@ public class ProjectCriteria implements Serializable, Criteria {
         this.observationsId = other.observationsId == null ? null : other.observationsId.copy();
         this.facultyId = other.facultyId == null ? null : other.facultyId.copy();
         this.supervisorId = other.supervisorId == null ? null : other.supervisorId.copy();
+        this.batchId = other.batchId == null ? null : other.batchId.copy();
     }
 
     @Override
@@ -112,6 +115,14 @@ public class ProjectCriteria implements Serializable, Criteria {
         this.supervisorId = supervisorId;
     }
 
+    public LongFilter getBatchId() {
+        return batchId;
+    }
+
+    public void setBatchId(LongFilter batchId) {
+        this.batchId = batchId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -129,7 +140,8 @@ public class ProjectCriteria implements Serializable, Criteria {
             Objects.equals(filesId, that.filesId) &&
             Objects.equals(observationsId, that.observationsId) &&
             Objects.equals(facultyId, that.facultyId) &&
-            Objects.equals(supervisorId, that.supervisorId);
+            Objects.equals(supervisorId, that.supervisorId) &&
+            Objects.equals(batchId, that.batchId);
     }
 
     @Override
@@ -141,7 +153,8 @@ public class ProjectCriteria implements Serializable, Criteria {
         filesId,
         observationsId,
         facultyId,
-        supervisorId
+        supervisorId,
+        batchId
         );
     }
 
@@ -156,6 +169,7 @@ public class ProjectCriteria implements Serializable, Criteria {
                 (observationsId != null ? "observationsId=" + observationsId + ", " : "") +
                 (facultyId != null ? "facultyId=" + facultyId + ", " : "") +
                 (supervisorId != null ? "supervisorId=" + supervisorId + ", " : "") +
+                (batchId != null ? "batchId=" + batchId + ", " : "") +
             "}";
     }
 

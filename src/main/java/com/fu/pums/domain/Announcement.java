@@ -46,7 +46,7 @@ public class Announcement implements Serializable {
     private Boolean open;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = "announcments", allowSetters = true)
+    @JsonIgnoreProperties(value = "announcements", allowSetters = true)
     private Faculty faculty;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here

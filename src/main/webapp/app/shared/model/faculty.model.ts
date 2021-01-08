@@ -9,7 +9,7 @@ export interface IFaculty {
   code?: string;
   students?: IStudent[];
   projects?: IProject[];
-  announcments?: IAnnouncement[];
+  announcements?: IAnnouncement[];
   supervisors?: ISupervisor[];
 }
 
@@ -20,7 +20,7 @@ export class Faculty implements IFaculty {
     public code?: string,
     public students?: IStudent[],
     public projects?: IProject[],
-    public announcments?: IAnnouncement[],
+    public announcements?: IAnnouncement[],
     public supervisors?: ISupervisor[]
   ) {}
 }

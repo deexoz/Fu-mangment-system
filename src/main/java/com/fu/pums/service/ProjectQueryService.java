@@ -108,6 +108,10 @@ public class ProjectQueryService extends QueryService<Project> {
                 specification = specification.and(buildSpecification(criteria.getSupervisorId(),
                     root -> root.join(Project_.supervisor, JoinType.LEFT).get(Supervisor_.id)));
             }
+            if (criteria.getBatchId() != null) {
+                specification = specification.and(buildSpecification(criteria.getBatchId(),
+                    root -> root.join(Project_.batch, JoinType.LEFT).get(Batch_.id)));
+            }
         }
         return specification;
     }

@@ -50,6 +50,14 @@
                         <option [ngValue]="supervisorOption.id === editForm.get('supervisor')!.value?.id ? editForm.get('supervisor')!.value : supervisorOption" *ngFor="let supervisorOption of supervisors; trackBy: trackById">{{ supervisorOption.fullName }}</option>
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.project.batch" for="field_batch">Batch</label>
+                    <select class="form-control" id="field_batch" name="batch" formControlName="batch">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="batchOption.id === editForm.get('batch')!.value?.id ? editForm.get('batch')!.value : batchOption" *ngFor="let batchOption of batches; trackBy: trackById">{{ batchOption.year }}</option>
+                    </select>
+                </div>
             </div>
 
             <div>

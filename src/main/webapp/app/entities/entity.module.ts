@@ -32,6 +32,10 @@ import { RouterModule } from '@angular/router';
         path: 'file',
         loadChildren: () => import('./file/file.module').then(m => m.ProjecunitmangmentFileModule),
       },
+      {
+        path: 'batch',
+        loadChildren: () => import('./batch/batch.module').then(m => m.ProjecunitmangmentBatchModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

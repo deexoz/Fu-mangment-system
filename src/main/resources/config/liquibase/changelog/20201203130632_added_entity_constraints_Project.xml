@@ -20,5 +20,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="supervisor"/>
 
+        <addForeignKeyConstraint baseColumnNames="batch_id"
+                                 baseTableName="project"
+                                 constraintName="fk_project_batch_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="batch"/>
+
     </changeSet>
 </databaseChangeLog>
