@@ -1,7 +1,10 @@
 package com.fu.pums.web.rest;
 
 import com.fu.pums.domain.Announcement;
+import com.fu.pums.domain.Faculty;
 import com.fu.pums.service.AnnouncementService;
+import com.fu.pums.service.FacultyService;
+import com.fu.pums.service.StudentService;
 import com.fu.pums.service.dto.FacultyAnnouncementDTO;
 import com.fu.pums.web.rest.errors.BadRequestAlertException;
 import com.fu.pums.service.dto.AnnouncementCriteria;
@@ -25,6 +28,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * REST controller for managing {@link com.fu.pums.domain.Announcement}.
@@ -44,9 +48,13 @@ public class AnnouncementResource {
 
     private final AnnouncementQueryService announcementQueryService;
 
-    public AnnouncementResource(AnnouncementService announcementService, AnnouncementQueryService announcementQueryService) {
+    private final FacultyService facultyService;
+
+    public AnnouncementResource(FacultyService facultyService,AnnouncementService announcementService, AnnouncementQueryService announcementQueryService) {
         this.announcementService = announcementService;
         this.announcementQueryService = announcementQueryService;
+        this.facultyService = facultyService;
+
     }
 
     /**
@@ -66,6 +74,14 @@ public class AnnouncementResource {
         return ResponseEntity.created(new URI("/api/announcements/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
+    }
+    @PostMapping("/student-announcement")
+    public ResponseEntity<Announcement> createStudentAnnouncement(@RequestBody FacultyAnnouncementDTO facultyAnnouncementDTO){
+        Optional<Faculty> faculty = facultyService.findOneByFacultyAndBatch(facultyAnnouncementDTO.getFaculty(), facultyAnnouncementDTO.getBatch());
+        if (faculty.isPresent()){
+            faculty.get();
+        }
+        return null;
     }
 
     /**

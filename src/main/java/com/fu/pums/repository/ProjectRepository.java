@@ -1,5 +1,6 @@
 package com.fu.pums.repository;
 
+import com.fu.pums.domain.Batch;
 import com.fu.pums.domain.Faculty;
 import com.fu.pums.domain.Project;
 
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Spring Data  repository for the Project entity.
@@ -22,4 +24,5 @@ public interface ProjectRepository extends JpaRepository<Project, Long>, JpaSpec
     Optional<List<Project>> findAllByFaculty (Faculty faculty);
     Optional<Project> findOneByStudents(Student student);
 
+    Set<Project> findAllByFacultyAndBatch(Faculty faculty, Batch batch);
 }

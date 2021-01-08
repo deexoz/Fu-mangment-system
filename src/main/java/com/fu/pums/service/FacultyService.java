@@ -1,5 +1,6 @@
 package com.fu.pums.service;
 
+import com.fu.pums.domain.Batch;
 import com.fu.pums.domain.Faculty;
 import com.fu.pums.repository.FacultyRepository;
 import org.slf4j.Logger;
@@ -80,5 +81,9 @@ public class FacultyService {
     public void delete(Long id) {
         log.debug("Request to delete Faculty : {}", id);
         facultyRepository.deleteById(id);
+    }
+
+    public Optional<Faculty> findOneByFacultyAndBatch(Faculty faculty, Batch batch) {
+      return  facultyRepository.findOneByFacultyAndBatch(faculty,batch);
     }
 }

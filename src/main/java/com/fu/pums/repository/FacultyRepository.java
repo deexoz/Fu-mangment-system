@@ -1,5 +1,6 @@
 package com.fu.pums.repository;
 
+import com.fu.pums.domain.Batch;
 import com.fu.pums.domain.Faculty;
 
 import org.springframework.data.domain.Page;
@@ -16,6 +17,7 @@ import java.util.Optional;
  */
 @Repository
 public interface FacultyRepository extends JpaRepository<Faculty, Long>, JpaSpecificationExecutor<Faculty> {
+    Optional<Faculty> findOneByFacultyAndBatch(Faculty faculty, Batch batch);
 
     @Query(value = "select distinct faculty from Faculty faculty left join fetch faculty.supervisors",
         countQuery = "select count(distinct faculty) from Faculty faculty")
@@ -26,4 +28,5 @@ public interface FacultyRepository extends JpaRepository<Faculty, Long>, JpaSpec
 
     @Query("select faculty from Faculty faculty left join fetch faculty.supervisors where faculty.id =:id")
     Optional<Faculty> findOneWithEagerRelationships(@Param("id") Long id);
+
 }
