@@ -1,5 +1,6 @@
 package com.fu.pums.service;
 
+import com.fu.pums.domain.Batch;
 import com.fu.pums.domain.Faculty;
 import com.fu.pums.domain.Project;
 import com.fu.pums.domain.Student;
@@ -14,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Service Implementation for managing {@link Project}.
@@ -90,4 +92,7 @@ public class ProjectService {
     }
 
 
+    public Set<Project> findAllByFacultyAndBatch(Faculty faculty, Batch batch) {
+        return projectRepository.findAllByFacultyAndBatch(faculty, batch);
+    }
 }

@@ -1,6 +1,5 @@
 package com.fu.pums.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -44,10 +43,6 @@ public class Announcement implements Serializable {
 
     @Column(name = "open")
     private Boolean open;
-
-    @ManyToOne
-    @JsonIgnoreProperties(value = "announcements", allowSetters = true)
-    private Faculty faculty;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -134,19 +129,6 @@ public class Announcement implements Serializable {
 
     public void setOpen(Boolean open) {
         this.open = open;
-    }
-
-    public Faculty getFaculty() {
-        return faculty;
-    }
-
-    public Announcement faculty(Faculty faculty) {
-        this.faculty = faculty;
-        return this;
-    }
-
-    public void setFaculty(Faculty faculty) {
-        this.faculty = faculty;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

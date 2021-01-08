@@ -34,8 +34,6 @@ public class FacultyCriteria implements Serializable, Criteria {
 
     private LongFilter projectsId;
 
-    private LongFilter announcementsId;
-
     private LongFilter supervisorsId;
 
     public FacultyCriteria() {
@@ -47,7 +45,6 @@ public class FacultyCriteria implements Serializable, Criteria {
         this.code = other.code == null ? null : other.code.copy();
         this.studentsId = other.studentsId == null ? null : other.studentsId.copy();
         this.projectsId = other.projectsId == null ? null : other.projectsId.copy();
-        this.announcementsId = other.announcementsId == null ? null : other.announcementsId.copy();
         this.supervisorsId = other.supervisorsId == null ? null : other.supervisorsId.copy();
     }
 
@@ -96,14 +93,6 @@ public class FacultyCriteria implements Serializable, Criteria {
         this.projectsId = projectsId;
     }
 
-    public LongFilter getAnnouncementsId() {
-        return announcementsId;
-    }
-
-    public void setAnnouncementsId(LongFilter announcementsId) {
-        this.announcementsId = announcementsId;
-    }
-
     public LongFilter getSupervisorsId() {
         return supervisorsId;
     }
@@ -128,7 +117,6 @@ public class FacultyCriteria implements Serializable, Criteria {
             Objects.equals(code, that.code) &&
             Objects.equals(studentsId, that.studentsId) &&
             Objects.equals(projectsId, that.projectsId) &&
-            Objects.equals(announcementsId, that.announcementsId) &&
             Objects.equals(supervisorsId, that.supervisorsId);
     }
 
@@ -140,7 +128,6 @@ public class FacultyCriteria implements Serializable, Criteria {
         code,
         studentsId,
         projectsId,
-        announcementsId,
         supervisorsId
         );
     }
@@ -154,7 +141,6 @@ public class FacultyCriteria implements Serializable, Criteria {
                 (code != null ? "code=" + code + ", " : "") +
                 (studentsId != null ? "studentsId=" + studentsId + ", " : "") +
                 (projectsId != null ? "projectsId=" + projectsId + ", " : "") +
-                (announcementsId != null ? "announcementsId=" + announcementsId + ", " : "") +
                 (supervisorsId != null ? "supervisorsId=" + supervisorsId + ", " : "") +
             "}";
     }

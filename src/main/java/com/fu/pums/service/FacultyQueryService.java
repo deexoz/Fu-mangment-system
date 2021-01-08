@@ -99,10 +99,6 @@ public class FacultyQueryService extends QueryService<Faculty> {
                 specification = specification.and(buildSpecification(criteria.getProjectsId(),
                     root -> root.join(Faculty_.projects, JoinType.LEFT).get(Project_.id)));
             }
-            if (criteria.getAnnouncementsId() != null) {
-                specification = specification.and(buildSpecification(criteria.getAnnouncementsId(),
-                    root -> root.join(Faculty_.announcements, JoinType.LEFT).get(Announcement_.id)));
-            }
             if (criteria.getSupervisorsId() != null) {
                 specification = specification.and(buildSpecification(criteria.getSupervisorsId(),
                     root -> root.join(Faculty_.supervisors, JoinType.LEFT).get(Supervisor_.id)));

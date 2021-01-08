@@ -28,15 +28,7 @@
       "fieldType": "Boolean"
     }
   ],
-  "relationships": [
-    {
-      "relationshipType": "many-to-one",
-      "otherEntityName": "faculty",
-      "otherEntityRelationshipName": "announcements",
-      "relationshipName": "faculty",
-      "otherEntityField": "name"
-    }
-  ],
+  "relationships": [],
   "changelogDate": "20201203130932",
   "entityTableName": "announcement",
   "dto": "no",

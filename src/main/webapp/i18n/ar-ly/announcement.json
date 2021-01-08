@@ -21,8 +21,7 @@
       "announcementType": "Announcement Type",
       "startDate": "Start Date",
       "endDate": "End Date",
-      "open": "Open",
-      "faculty": "Faculty"
+      "open": "Open"
     }
   }
 }

@@ -92,6 +92,10 @@ public class BatchQueryService extends QueryService<Batch> {
                 specification = specification.and(buildSpecification(criteria.getProjectsId(),
                     root -> root.join(Batch_.projects, JoinType.LEFT).get(Project_.id)));
             }
+            if (criteria.getStudentsId() != null) {
+                specification = specification.and(buildSpecification(criteria.getStudentsId(),
+                    root -> root.join(Batch_.students, JoinType.LEFT).get(Student_.id)));
+            }
         }
         return specification;
     }

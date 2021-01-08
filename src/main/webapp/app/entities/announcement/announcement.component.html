@@ -29,7 +29,6 @@
                     <th scope="col"  jhiSortBy="startDate"><span jhiTranslate="projecunitmangmentApp.announcement.startDate">Start Date</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="endDate"><span jhiTranslate="projecunitmangmentApp.announcement.endDate">End Date</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="open"><span jhiTranslate="projecunitmangmentApp.announcement.open">Open</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="faculty.name"><span jhiTranslate="projecunitmangmentApp.announcement.faculty">Faculty</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -42,11 +41,6 @@
                     <td>{{ announcement.startDate | date:'mediumDate' }}</td>
                     <td>{{ announcement.endDate | date:'mediumDate' }}</td>
                     <td>{{ announcement.open }}</td>
-                    <td>
-                        <div *ngIf="announcement.faculty">
-                            <a [routerLink]="['/faculty', announcement.faculty?.id, 'view']" >{{ announcement.faculty?.name }}</a>
-                        </div>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

@@ -29,6 +29,7 @@
                     <th scope="col"  jhiSortBy="user.login"><span jhiTranslate="projecunitmangmentApp.student.user">User</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="faculty.name"><span jhiTranslate="projecunitmangmentApp.student.faculty">Faculty</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"  jhiSortBy="project.name"><span jhiTranslate="projecunitmangmentApp.student.project">Project</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="batch.year"><span jhiTranslate="projecunitmangmentApp.student.batch">Batch</span> <fa-icon icon="sort"></fa-icon></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -49,6 +50,11 @@
                     <td>
                         <div *ngIf="student.project">
                             <a [routerLink]="['/project', student.project?.id, 'view']" >{{ student.project?.name }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="student.batch">
+                            <a [routerLink]="['/batch', student.batch?.id, 'view']" >{{ student.batch?.year }}</a>
                         </div>
                     </td>
                     <td class="text-right">

@@ -106,6 +106,10 @@ public class StudentQueryService extends QueryService<Student> {
                 specification = specification.and(buildSpecification(criteria.getProjectId(),
                     root -> root.join(Student_.project, JoinType.LEFT).get(Project_.id)));
             }
+            if (criteria.getBatchId() != null) {
+                specification = specification.and(buildSpecification(criteria.getBatchId(),
+                    root -> root.join(Student_.batch, JoinType.LEFT).get(Batch_.id)));
+            }
         }
         return specification;
     }

@@ -12,6 +12,12 @@
       "otherEntityName": "project",
       "otherEntityRelationshipName": "batch",
       "relationshipName": "projects"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "student",
+      "otherEntityRelationshipName": "batch",
+      "relationshipName": "students"
     }
   ],
   "changelogDate": "20210108165804",

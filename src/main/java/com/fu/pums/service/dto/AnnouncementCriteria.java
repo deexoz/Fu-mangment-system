@@ -56,8 +56,6 @@ public class AnnouncementCriteria implements Serializable, Criteria {
 
     private BooleanFilter open;
 
-    private LongFilter facultyId;
-
     public AnnouncementCriteria() {
     }
 
@@ -68,7 +66,6 @@ public class AnnouncementCriteria implements Serializable, Criteria {
         this.startDate = other.startDate == null ? null : other.startDate.copy();
         this.endDate = other.endDate == null ? null : other.endDate.copy();
         this.open = other.open == null ? null : other.open.copy();
-        this.facultyId = other.facultyId == null ? null : other.facultyId.copy();
     }
 
     @Override
@@ -124,14 +121,6 @@ public class AnnouncementCriteria implements Serializable, Criteria {
         this.open = open;
     }
 
-    public LongFilter getFacultyId() {
-        return facultyId;
-    }
-
-    public void setFacultyId(LongFilter facultyId) {
-        this.facultyId = facultyId;
-    }
-
 
     @Override
     public boolean equals(Object o) {
@@ -148,8 +137,7 @@ public class AnnouncementCriteria implements Serializable, Criteria {
             Objects.equals(announcementType, that.announcementType) &&
             Objects.equals(startDate, that.startDate) &&
             Objects.equals(endDate, that.endDate) &&
-            Objects.equals(open, that.open) &&
-            Objects.equals(facultyId, that.facultyId);
+            Objects.equals(open, that.open);
     }
 
     @Override
@@ -160,8 +148,7 @@ public class AnnouncementCriteria implements Serializable, Criteria {
         announcementType,
         startDate,
         endDate,
-        open,
-        facultyId
+        open
         );
     }
 
@@ -175,7 +162,6 @@ public class AnnouncementCriteria implements Serializable, Criteria {
                 (startDate != null ? "startDate=" + startDate + ", " : "") +
                 (endDate != null ? "endDate=" + endDate + ", " : "") +
                 (open != null ? "open=" + open + ", " : "") +
-                (facultyId != null ? "facultyId=" + facultyId + ", " : "") +
             "}";
     }
 

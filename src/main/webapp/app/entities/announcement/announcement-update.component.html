@@ -58,14 +58,6 @@
                     <input type="checkbox" class="form-control" name="open" id="field_open"
                            formControlName="open"/>
                 </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.announcement.faculty" for="field_faculty">Faculty</label>
-                    <select class="form-control" id="field_faculty" name="faculty" formControlName="faculty">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="facultyOption.id === editForm.get('faculty')!.value?.id ? editForm.get('faculty')!.value : facultyOption" *ngFor="let facultyOption of faculties; trackBy: trackById">{{ facultyOption.name }}</option>
-                    </select>
-                </div>
             </div>
 
             <div>

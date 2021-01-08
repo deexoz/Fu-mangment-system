@@ -37,6 +37,13 @@
       "otherEntityRelationshipName": "students",
       "relationshipName": "project",
       "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "batch",
+      "otherEntityRelationshipName": "students",
+      "relationshipName": "batch",
+      "otherEntityField": "year"
     }
   ],
   "changelogDate": "20201203130532",

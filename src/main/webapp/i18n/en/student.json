@@ -21,7 +21,8 @@
       "phone": "Phone",
       "user": "User",
       "faculty": "Faculty",
-      "project": "Project"
+      "project": "Project",
+      "batch": "Batch"
     }
   }
 }

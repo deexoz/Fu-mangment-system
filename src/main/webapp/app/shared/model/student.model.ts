@@ -1,6 +1,7 @@
 import { IUser } from 'app/core/user/user.model';
 import { IFaculty } from 'app/shared/model/faculty.model';
 import { IProject } from 'app/shared/model/project.model';
+import { IBatch } from 'app/shared/model/batch.model';
 
 export interface IStudent {
   id?: number;
@@ -10,6 +11,7 @@ export interface IStudent {
   user?: IUser;
   faculty?: IFaculty;
   project?: IProject;
+  batch?: IBatch;
 }
 
 export class Student implements IStudent {
@@ -20,6 +22,7 @@ export class Student implements IStudent {
     public phone?: string,
     public user?: IUser,
     public faculty?: IFaculty,
-    public project?: IProject
+    public project?: IProject,
+    public batch?: IBatch
   ) {}
 }

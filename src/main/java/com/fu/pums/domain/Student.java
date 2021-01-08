@@ -44,6 +44,10 @@ public class Student implements Serializable {
     @JsonIgnoreProperties(value = "students", allowSetters = true)
     private Project project;
 
+    @ManyToOne
+    @JsonIgnoreProperties(value = "students", allowSetters = true)
+    private Batch batch;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -129,6 +133,19 @@ public class Student implements Serializable {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public Batch getBatch() {
+        return batch;
+    }
+
+    public Student batch(Batch batch) {
+        this.batch = batch;
+        return this;
+    }
+
+    public void setBatch(Batch batch) {
+        this.batch = batch;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

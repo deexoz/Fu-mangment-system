@@ -13,8 +13,10 @@ import { IFaculty } from 'app/shared/model/faculty.model';
 import { FacultyService } from 'app/entities/faculty/faculty.service';
 import { IProject } from 'app/shared/model/project.model';
 import { ProjectService } from 'app/entities/project/project.service';
+import { IBatch } from 'app/shared/model/batch.model';
+import { BatchService } from 'app/entities/batch/batch.service';
 
-type SelectableEntity = IUser | IFaculty | IProject;
+type SelectableEntity = IUser | IFaculty | IProject | IBatch;
 
 @Component({
   selector: 'jhi-student-update',
@@ -25,6 +27,7 @@ export class StudentUpdateComponent implements OnInit {
   users: IUser[] = [];
   faculties: IFaculty[] = [];
   projects: IProject[] = [];
+  batches: IBatch[] = [];
 
   editForm = this.fb.group({
     id: [],
@@ -34,6 +37,7 @@ export class StudentUpdateComponent implements OnInit {
     user: [],
     faculty: [],
     project: [],
+    batch: [],
   });
 
   constructor(
@@ -41,6 +45,7 @@ export class StudentUpdateComponent implements OnInit {
     protected userService: UserService,
     protected facultyService: FacultyService,
     protected projectService: ProjectService,
+    protected batchService: BatchService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -54,6 +59,8 @@ export class StudentUpdateComponent implements OnInit {
       this.facultyService.query().subscribe((res: HttpResponse<IFaculty[]>) => (this.faculties = res.body || []));
 
       this.projectService.query().subscribe((res: HttpResponse<IProject[]>) => (this.projects = res.body || []));
+
+      this.batchService.query().subscribe((res: HttpResponse<IBatch[]>) => (this.batches = res.body || []));
     });
   }
 
@@ -66,6 +73,7 @@ export class StudentUpdateComponent implements OnInit {
       user: student.user,
       faculty: student.faculty,
       project: student.project,
+      batch: student.batch,
     });
   }
 
@@ -93,6 +101,7 @@ export class StudentUpdateComponent implements OnInit {
       user: this.editForm.get(['user'])!.value,
       faculty: this.editForm.get(['faculty'])!.value,
       project: this.editForm.get(['project'])!.value,
+      batch: this.editForm.get(['batch'])!.value,
     };
   }
 

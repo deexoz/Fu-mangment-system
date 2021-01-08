@@ -9,8 +9,6 @@ import { JhiDataUtils, JhiFileLoadError, JhiEventManager, JhiEventWithContent } 
 import { IAnnouncement, Announcement } from 'app/shared/model/announcement.model';
 import { AnnouncementService } from './announcement.service';
 import { AlertError } from 'app/shared/alert/alert-error.model';
-import { IFaculty } from 'app/shared/model/faculty.model';
-import { FacultyService } from 'app/entities/faculty/faculty.service';
 
 @Component({
   selector: 'jhi-announcement-update',
@@ -18,7 +16,6 @@ import { FacultyService } from 'app/entities/faculty/faculty.service';
 })
 export class AnnouncementUpdateComponent implements OnInit {
   isSaving = false;
-  faculties: IFaculty[] = [];
   startDateDp: any;
   endDateDp: any;
 
@@ -30,14 +27,12 @@ export class AnnouncementUpdateComponent implements OnInit {
     startDate: [],
     endDate: [],
     open: [],
-    faculty: [],
   });
 
   constructor(
     protected dataUtils: JhiDataUtils,
     protected eventManager: JhiEventManager,
     protected announcementService: AnnouncementService,
-    protected facultyService: FacultyService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -45,8 +40,6 @@ export class AnnouncementUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ announcement }) => {
       this.updateForm(announcement);
-
-      this.facultyService.query().subscribe((res: HttpResponse<IFaculty[]>) => (this.faculties = res.body || []));
     });
   }
 
@@ -59,7 +52,6 @@ export class AnnouncementUpdateComponent implements OnInit {
       startDate: announcement.startDate,
       endDate: announcement.endDate,
       open: announcement.open,
-      faculty: announcement.faculty,
     });
   }
 
@@ -103,7 +95,6 @@ export class AnnouncementUpdateComponent implements OnInit {
       startDate: this.editForm.get(['startDate'])!.value,
       endDate: this.editForm.get(['endDate'])!.value,
       open: this.editForm.get(['open'])!.value,
-      faculty: this.editForm.get(['faculty'])!.value,
     };
   }
 
@@ -121,9 +112,5 @@ export class AnnouncementUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
-  }
-
-  trackById(index: number, item: IFaculty): any {
-    return item.id;
   }
 }

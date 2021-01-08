@@ -1,5 +1,4 @@
 import { Moment } from 'moment';
-import { IFaculty } from 'app/shared/model/faculty.model';
 import { AnnouncementType } from 'app/shared/model/enumerations/announcement-type.model';
 
 export interface IAnnouncement {
@@ -10,7 +9,6 @@ export interface IAnnouncement {
   startDate?: Moment;
   endDate?: Moment;
   open?: boolean;
-  faculty?: IFaculty;
 }
 
 export class Announcement implements IAnnouncement {
@@ -21,8 +19,7 @@ export class Announcement implements IAnnouncement {
     public announcementType?: AnnouncementType,
     public startDate?: Moment,
     public endDate?: Moment,
-    public open?: boolean,
-    public faculty?: IFaculty
+    public open?: boolean
   ) {
     this.open = this.open || false;
   }

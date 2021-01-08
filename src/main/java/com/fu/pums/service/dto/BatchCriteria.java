@@ -30,6 +30,8 @@ public class BatchCriteria implements Serializable, Criteria {
 
     private LongFilter projectsId;
 
+    private LongFilter studentsId;
+
     public BatchCriteria() {
     }
 
@@ -37,6 +39,7 @@ public class BatchCriteria implements Serializable, Criteria {
         this.id = other.id == null ? null : other.id.copy();
         this.year = other.year == null ? null : other.year.copy();
         this.projectsId = other.projectsId == null ? null : other.projectsId.copy();
+        this.studentsId = other.studentsId == null ? null : other.studentsId.copy();
     }
 
     @Override
@@ -68,6 +71,14 @@ public class BatchCriteria implements Serializable, Criteria {
         this.projectsId = projectsId;
     }
 
+    public LongFilter getStudentsId() {
+        return studentsId;
+    }
+
+    public void setStudentsId(LongFilter studentsId) {
+        this.studentsId = studentsId;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -81,7 +92,8 @@ public class BatchCriteria implements Serializable, Criteria {
         return
             Objects.equals(id, that.id) &&
             Objects.equals(year, that.year) &&
-            Objects.equals(projectsId, that.projectsId);
+            Objects.equals(projectsId, that.projectsId) &&
+            Objects.equals(studentsId, that.studentsId);
     }
 
     @Override
@@ -89,7 +101,8 @@ public class BatchCriteria implements Serializable, Criteria {
         return Objects.hash(
         id,
         year,
-        projectsId
+        projectsId,
+        studentsId
         );
     }
 
@@ -100,6 +113,7 @@ public class BatchCriteria implements Serializable, Criteria {
                 (id != null ? "id=" + id + ", " : "") +
                 (year != null ? "year=" + year + ", " : "") +
                 (projectsId != null ? "projectsId=" + projectsId + ", " : "") +
+                (studentsId != null ? "studentsId=" + studentsId + ", " : "") +
             "}";
     }
 
