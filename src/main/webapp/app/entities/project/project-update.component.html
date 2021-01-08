@@ -1,61 +1,95 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-project-heading" jhiTranslate="projecunitmangmentApp.project.home.createOrEditLabel">Create or edit a Project</h2>
+            <h2 id="jhi-project-heading">Create
+                a Project</h2>
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
 
-                <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Project Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name" formControlName="name" />
+                </div>
+
+                <div>
+                    <form [formGroup]="firstStudent">
+                        <div>
+                            <label for="form-control-label" for="field_frist_student_name"> First student name</label>
+                            <input type="text" class="form-control" name="first_student_name"
+                                formControlName="fullNameArabic">
+                        </div>
+
+                        <div>
+                            <label for="form-control-label" for="field_frist_student_phone"> First student phone</label>
+                            <input type="text" class="form-control" name="first_student_phone" formControlName="phone">
+                        </div>
+
+                        <div>
+                            <label for="form-control-label" for="field_frist_student_index"> First student index</label>
+                            <input type="number" class="form-control" name="first_student_index"
+                                formControlName="index">
+                        </div>
+                    </form>
+                </div>
+
+                <div>
+                    <form [formGroup]="secondStudent">
+                        <div>
+                            <label for="form-control-label" for="field_second_student_name"> Second student name</label>
+                            <input type="text" class="form-control" name="second_student_name"
+                                formControlName="fullNameArabic">
+                        </div>
+
+                        <div>
+                            <label for="form-control-label" for="field_frist_student_phone"> second student
+                                phone</label>
+                            <input type="text" class="form-control" name="second_student_phone" formControlName="phone">
+                        </div>
+
+                        <div>
+                            <label for="form-control-label" for="field_frist_student_index"> second student
+                                index</label>
+                            <input type="number" class="form-control" name="second_student_index"
+                                formControlName="index">
+                        </div>
+                    </form>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.project.name" for="field_name">Name</label>
-                    <input type="text" class="form-control" name="name" id="field_name"
-                           formControlName="name"/>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.project.details" for="field_details">Details</label>
-                    <textarea class="form-control" name="details" id="field_details"
-                              formControlName="details"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.project.objectives" for="field_objectives">Objectives</label>
-                    <textarea class="form-control" name="objectives" id="field_objectives"
-                              formControlName="objectives"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.project.problems" for="field_problems">Problems</label>
-                    <textarea class="form-control" name="problems" id="field_problems"
-                              formControlName="problems"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.project.faculty" for="field_faculty">Faculty</label>
+                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.project.faculty"
+                        for="field_faculty">Faculty</label>
                     <select class="form-control" id="field_faculty" name="faculty" formControlName="faculty">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="facultyOption.id === editForm.get('faculty')!.value?.id ? editForm.get('faculty')!.value : facultyOption" *ngFor="let facultyOption of faculties; trackBy: trackById">{{ facultyOption.name }}</option>
+                        <option
+                            [ngValue]="facultyOption.id === editForm.get('faculty')!.value?.id ? editForm.get('faculty')!.value : facultyOption"
+                            *ngFor="let facultyOption of faculties; trackBy: trackById">{{ facultyOption.name }}
+                        </option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.project.supervisor" for="field_supervisor">Supervisor</label>
+                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.project.supervisor"
+                        for="field_supervisor">Supervisor</label>
                     <select class="form-control" id="field_supervisor" name="supervisor" formControlName="supervisor">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="supervisorOption.id === editForm.get('supervisor')!.value?.id ? editForm.get('supervisor')!.value : supervisorOption" *ngFor="let supervisorOption of supervisors; trackBy: trackById">{{ supervisorOption.fullName }}</option>
+                        <option
+                            [ngValue]="supervisorOption.id === editForm.get('supervisor')!.value?.id ? editForm.get('supervisor')!.value : supervisorOption"
+                            *ngFor="let supervisorOption of supervisors; trackBy: trackById">{{
+                            supervisorOption.fullName }}</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.project.batch" for="field_batch">Batch</label>
+                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.project.batch"
+                        for="field_batch">Batch</label>
                     <select class="form-control" id="field_batch" name="batch" formControlName="batch">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="batchOption.id === editForm.get('batch')!.value?.id ? editForm.get('batch')!.value : batchOption" *ngFor="let batchOption of batches; trackBy: trackById">{{ batchOption.year }}</option>
+                        <option
+                            [ngValue]="batchOption.id === editForm.get('batch')!.value?.id ? editForm.get('batch')!.value : batchOption"
+                            *ngFor="let batchOption of batches; trackBy: trackById">{{ batchOption.year }}</option>
                     </select>
                 </div>
             </div>
@@ -65,7 +99,8 @@
                     <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
 
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
+                    class="btn btn-primary">
                     <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>

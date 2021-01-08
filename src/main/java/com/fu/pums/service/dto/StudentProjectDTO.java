@@ -1,54 +1,35 @@
 package com.fu.pums.service.dto;
 
 import com.fu.pums.domain.Faculty;
+import com.fu.pums.domain.Project;
 import com.fu.pums.domain.Student;
 import com.fu.pums.domain.Supervisor;
-
-import javax.validation.constraints.NotNull;
 import java.util.Set;
+import javax.validation.constraints.NotNull;
 
 public class StudentProjectDTO {
+  @NotNull
+  private Project project;
+
 
     @NotNull
-    private String projectName;
+  private Set<Student> students;
 
-    @NotNull
-    private Set<Student> students;
 
-    @NotNull
-    private Faculty faculty;
 
-    private Supervisor supervisor;
-
-    public String getProjectName() {
-        return projectName;
+    public Project getProject() {
+        return project;
     }
 
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
+    public void setProject(Project project) {
+        this.project = project;
     }
 
-    public Set<Student> getStudents() {
-        return students;
-    }
+  public Set<Student> getStudents() {
+    return students;
+  }
 
-    public void setStudents(Set<Student> students) {
-        this.students = students;
-    }
-
-    public Faculty getFaculty() {
-        return faculty;
-    }
-
-    public void setFaculty(Faculty faculty) {
-        this.faculty = faculty;
-    }
-
-    public Supervisor getSupervisor() {
-        return supervisor;
-    }
-
-    public void setSupervisor(Supervisor supervisor) {
-        this.supervisor = supervisor;
-    }
+  public void setStudents(Set<Student> students) {
+    this.students = students;
+  }
 }

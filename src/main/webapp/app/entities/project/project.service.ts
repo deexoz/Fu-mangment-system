@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { IProject } from 'app/shared/model/project.model';
+import { ProjectDTO } from 'app/shared/model/projectDTO';
 
 type EntityResponseType = HttpResponse<IProject>;
 type EntityArrayResponseType = HttpResponse<IProject[]>;
@@ -31,7 +32,9 @@ export class ProjectService {
     const options = createRequestOption(req);
     return this.http.get<IProject[]>(this.resourceUrl, { params: options, observe: 'response' });
   }
-
+  studentProjectCreation(projectDto: ProjectDTO): Observable<EntityResponseType> {
+    return this.http.post<ProjectDTO>(SERVER_API_URL + 'api/studentsProject', projectDto, { observe: 'response' });
+  }
   delete(id: number): Observable<HttpResponse<{}>> {
     return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }

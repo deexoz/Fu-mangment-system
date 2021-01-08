@@ -15,6 +15,8 @@ import { ISupervisor } from 'app/shared/model/supervisor.model';
 import { SupervisorService } from 'app/entities/supervisor/supervisor.service';
 import { IBatch } from 'app/shared/model/batch.model';
 import { BatchService } from 'app/entities/batch/batch.service';
+import { IStudent } from 'app/shared/model/student.model';
+import { ProjectDTO } from 'app/shared/model/projectDTO';
 
 type SelectableEntity = IFaculty | ISupervisor | IBatch;
 
@@ -27,13 +29,20 @@ export class ProjectUpdateComponent implements OnInit {
   faculties: IFaculty[] = [];
   supervisors: ISupervisor[] = [];
   batches: IBatch[] = [];
+  students: IStudent[] = [];
 
+  firstStudent = this.fb.group({
+    index: [],
+    fullNameArabic: [],
+    phone: [],
+  });
+  secondStudent = this.fb.group({
+    index: [],
+    fullNameArabic: [],
+    phone: [],
+  });
   editForm = this.fb.group({
-    id: [],
     name: [],
-    details: [],
-    objectives: [],
-    problems: [],
     faculty: [],
     supervisor: [],
     batch: [],
@@ -52,26 +61,11 @@ export class ProjectUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ project }) => {
-      this.updateForm(project);
-
       this.facultyService.query().subscribe((res: HttpResponse<IFaculty[]>) => (this.faculties = res.body || []));
 
       this.supervisorService.query().subscribe((res: HttpResponse<ISupervisor[]>) => (this.supervisors = res.body || []));
 
       this.batchService.query().subscribe((res: HttpResponse<IBatch[]>) => (this.batches = res.body || []));
-    });
-  }
-
-  updateForm(project: IProject): void {
-    this.editForm.patchValue({
-      id: project.id,
-      name: project.name,
-      details: project.details,
-      objectives: project.objectives,
-      problems: project.problems,
-      faculty: project.faculty,
-      supervisor: project.supervisor,
-      batch: project.batch,
     });
   }
 
@@ -97,24 +91,23 @@ export class ProjectUpdateComponent implements OnInit {
 
   save(): void {
     this.isSaving = true;
-    const project = this.createFromForm();
-    if (project.id !== undefined) {
-      this.subscribeToSaveResponse(this.projectService.update(project));
-    } else {
-      this.subscribeToSaveResponse(this.projectService.create(project));
-    }
+    const projectDTO = new ProjectDTO();
+    projectDTO.project = this.createFromForm();
+    this.students.push(this.secondStudent.value);
+    this.students.push(this.firstStudent.value);
+    projectDTO.students = this.students;
+
+    console.error(projectDTO);
+
+    this.subscribeToSaveResponse(this.projectService.studentProjectCreation(projectDTO));
   }
 
   private createFromForm(): IProject {
     return {
       ...new Project(),
-      id: this.editForm.get(['id'])!.value,
       name: this.editForm.get(['name'])!.value,
-      details: this.editForm.get(['details'])!.value,
-      objectives: this.editForm.get(['objectives'])!.value,
-      problems: this.editForm.get(['problems'])!.value,
-      faculty: this.editForm.get(['faculty'])!.value,
       supervisor: this.editForm.get(['supervisor'])!.value,
+      faculty: this.editForm.get(['faculty'])!.value,
       batch: this.editForm.get(['batch'])!.value,
     };
   }

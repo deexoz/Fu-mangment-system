@@ -89,4 +89,9 @@ public class StudentService {
     public Optional<Student> getCurrentStudent() {
         return studentRepository.findById(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get().getId());
     }
+
+    @Transactional(readOnly = true)
+    public  Optional<Student> getStudentByIndex(String index){
+        return  studentRepository.findOneByIndex(index);
+    }
 }

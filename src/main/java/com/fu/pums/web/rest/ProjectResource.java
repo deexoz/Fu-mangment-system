@@ -85,26 +85,38 @@ public class ProjectResource {
                         .createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
                 .body(result);
     }
-    @PreAuthorize(AuthoritiesConstants.ADMIN)
     @PostMapping("/studentsProject")
     public ResponseEntity<Project> createProject(@RequestBody StudentProjectDTO studentProjectDTO)
             throws URISyntaxException {
-        if (studentProjectDTO.getStudents().size() > 2) {
+
+        if (studentProjectDTO.getProject().getFaculty() == null){
+            throw new BadRequestAlertException("Project must have faculty", studentProjectDTO.getStudents().toString(),
+                "tooMuchStudent");
+        }
+        if (studentProjectDTO.getProject().getBatch() == null) {
+            throw new BadRequestAlertException("Project must have batch", studentProjectDTO.getStudents().toString(),
+                "tooMuchStudent");
+        }
+
+            if (studentProjectDTO.getStudents().isEmpty()) {
+            throw new BadRequestAlertException("is empty", "ljdfjg",
+                "is empty of sudent");
+
+        }
+        if (studentProjectDTO.getStudents().size() > 2){
+
             throw new BadRequestAlertException("Project cannot be more the 2 students", studentProjectDTO.getStudents().toString(),
                 "tooMuchStudent");
         }
 
-        Project project = new Project();
-        project.setFaculty(studentProjectDTO.getFaculty());
-        project.setSupervisor(studentProjectDTO.getSupervisor());
-        project.setName(studentProjectDTO.getProjectName());
+        Project project = studentProjectDTO.getProject();
 
         studentProjectDTO.getStudents().forEach(student -> {
-//            Optional<Student>  returnedStudent = this.studentService.findByIndex(student.getIndex());
-            if (student.getUser().getId() != null){
+            Optional<Student>  returnedStudent = studentService.getStudentByIndex(student.getIndex());
+            if (returnedStudent.isPresent()){
 
                 throw new BadRequestAlertException("student already have a project", studentProjectDTO.getStudents().toString(),
-                    "tooMuchStudents");
+                    "userexist");
             }
         });
         Project result = projectService.save(project);
@@ -119,7 +131,7 @@ public class ProjectResource {
             user.setEmail(student.getIndex() + "@fu.com");
             User returnedUser = userService.createUser(user);
             student.setUser(returnedUser);
-            student.setFaculty(studentProjectDTO.getFaculty());
+            student.setFaculty(studentProjectDTO.getProject().getFaculty());
             student.setProject(project);
             studentService.save(student);
         });
