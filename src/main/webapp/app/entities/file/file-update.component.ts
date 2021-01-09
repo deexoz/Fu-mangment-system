@@ -71,7 +71,7 @@ export class FileUpdateComponent implements OnInit {
   }
 
   openFile(contentType: string, base64String: string): void {
-    this.dataUtils.openFile(contentType, base64String);
+    this.dataUtils.downloadFile(contentType, base64String, contentType);
   }
 
   setFileData(event: any, field: string, isImage: boolean): void {

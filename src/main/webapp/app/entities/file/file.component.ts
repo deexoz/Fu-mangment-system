@@ -124,4 +124,11 @@ export class FileComponent implements OnInit, OnDestroy {
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
   }
+  download(file: IFile): void {
+    console.warn(file);
+    const data = file.file ?? '';
+    const contentType = file.fileContentType ?? '';
+
+    this.dataUtils.downloadFile(contentType, data, contentType);
+  }
 }

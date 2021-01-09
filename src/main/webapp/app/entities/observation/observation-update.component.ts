@@ -85,8 +85,6 @@ export class ObservationUpdateComponent implements OnInit {
   }
 
   setFileData(event: any, field: string, isImage: boolean): void {
-    console.warn('jdfjsdfkh');
-
     this.dataUtils.loadFileToForm(event, this.fileForm, field, isImage).subscribe(null, (err: JhiFileLoadError) => {
       this.eventManager.broadcast(
         new JhiEventWithContent<AlertError>('projecunitmangmentApp.error', { ...err, key: 'error.file.' + err.key })

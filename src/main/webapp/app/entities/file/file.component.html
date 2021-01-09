@@ -2,10 +2,11 @@
     <h2 id="page-heading">
         <span jhiTranslate="projecunitmangmentApp.file.home.title">Files</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-file" [routerLink]="['/file/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-file"
+            [routerLink]="['/file/new']">
             <fa-icon icon="plus"></fa-icon>
-            <span  jhiTranslate="projecunitmangmentApp.file.home.createLabel">
-            Create a new File
+            <span jhiTranslate="projecunitmangmentApp.file.home.createLabel">
+                Create a new File
             </span>
         </button>
     </h2>
@@ -22,12 +23,26 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="name"><span jhiTranslate="projecunitmangmentApp.file.name">Name</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="file"><span jhiTranslate="projecunitmangmentApp.file.file">File</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="uploadDate"><span jhiTranslate="projecunitmangmentApp.file.uploadDate">Upload Date</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="type"><span jhiTranslate="projecunitmangmentApp.file.type">Type</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="project.name"><span jhiTranslate="projecunitmangmentApp.file.project">Project</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="name"><span jhiTranslate="projecunitmangmentApp.file.name">Name</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="file"><span jhiTranslate="projecunitmangmentApp.file.file">File</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="uploadDate"><span
+                            jhiTranslate="projecunitmangmentApp.file.uploadDate">Upload Date</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="type"><span jhiTranslate="projecunitmangmentApp.file.type">Type</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="project.name"><span
+                            jhiTranslate="projecunitmangmentApp.file.project">Project</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -36,36 +51,37 @@
                     <td><a [routerLink]="['/file', file.id, 'view']">{{ file.id }}</a></td>
                     <td>{{ file.name }}</td>
                     <td>
-                        <a *ngIf="file.file" (click)="openFile(file.fileContentType, file.file)" jhiTranslate="entity.action.open">open</a>
+                        <a *ngIf="file.file" (click)="openFile(file.fileContentType, file.file)"
+                            jhiTranslate="entity.action.open">open</a>
                         <span *ngIf="file.file">{{ file.fileContentType }}, {{ byteSize(file.file) }}</span>
                     </td>
                     <td>{{ file.uploadDate | date:'medium' }}</td>
                     <td>{{ file.type }}</td>
                     <td>
                         <div *ngIf="file.project">
-                            <a [routerLink]="['/project', file.project?.id, 'view']" >{{ file.project?.name }}</a>
+                            <a [routerLink]="['/project', file.project?.id, 'view']">{{ file.project?.name }}</a>
                         </div>
                     </td>
                     <td class="text-right">
                         <div class="btn-group">
-                            <button type="submit"
-                                    [routerLink]="['/file', file.id, 'view']"
-                                    class="btn btn-info btn-sm">
+                            <button type="submit" [routerLink]="['/file', file.id, 'view']" class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                             </button>
 
-                            <button type="submit"
-                                    [routerLink]="['/file', file.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
+                            <button type="submit" [routerLink]="['/file', file.id, 'edit']"
+                                class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                             </button>
 
-                            <button type="submit" (click)="delete(file)"
-                                    class="btn btn-danger btn-sm">
+                            <button type="submit" (click)="delete(file)" class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+
+                            <button type="submit" (click)="download(file)" class="btn btn-success">
+                                DownLoad
                             </button>
                         </div>
                     </td>
@@ -80,7 +96,8 @@
         </div>
 
         <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage"
+                [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
         </div>
     </div>
 </div>
