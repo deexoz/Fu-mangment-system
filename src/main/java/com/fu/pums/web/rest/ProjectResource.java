@@ -128,6 +128,7 @@ public class ProjectResource {
             user.setAuthorities(authorities);
             user.setLogin(student.getIndex());
             user.setActivated(true);
+            user.setFirstName(student.getFullNameArabic());
             user.setEmail(student.getIndex() + "@fu.com");
             User returnedUser = userService.createUser(user);
             student.setUser(returnedUser);
