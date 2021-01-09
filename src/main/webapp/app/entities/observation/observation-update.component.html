@@ -1,7 +1,8 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-observation-heading" jhiTranslate="projecunitmangmentApp.observation.home.createOrEditLabel">Create or edit a Observation</h2>
+            <h2 id="jhi-observation-heading" jhiTranslate="projecunitmangmentApp.observation.home.createOrEditLabel">
+                Create or edit a Observation</h2>
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
@@ -12,37 +13,78 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.observation.title" for="field_title">Title</label>
-                    <input type="text" class="form-control" name="title" id="field_title"
-                           formControlName="title"/>
+                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.observation.title"
+                        for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title" formControlName="title" />
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.observation.detail" for="field_detail">Detail</label>
-                    <textarea class="form-control" name="detail" id="field_detail"
-                              formControlName="detail"></textarea>
+                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.observation.detail"
+                        for="field_detail">Detail</label>
+                    <textarea class="form-control" name="detail" id="field_detail" formControlName="detail"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.observation.creationDate" for="field_creationDate">Creation Date</label>
+                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.observation.creationDate"
+                        for="field_creationDate">Creation Date</label>
                     <div class="d-flex">
-                        <input id="field_creationDate" type="datetime-local" class="form-control" name="creationDate" formControlName="creationDate" placeholder="YYYY-MM-DD HH:mm"/>
+                        <input id="field_creationDate" type="datetime-local" class="form-control" name="creationDate"
+                            formControlName="creationDate" placeholder="YYYY-MM-DD HH:mm" />
                     </div>
                 </div>
+                <div>
+                    <form name="fileForm" role="form" novalidate [formGroup]="fileForm">
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="projecunitmangmentApp.file.name"
+                                for="field_name">Name</label>
+                            <input type="text" class="form-control" name="name" id="field_name"
+                                formControlName="name" />
+                        </div>
 
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.observation.file" for="field_file">File</label>
-                    <select class="form-control" id="field_file" name="file" formControlName="file">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="fileOption.id === editForm.get('file')!.value?.id ? editForm.get('file')!.value : fileOption" *ngFor="let fileOption of files; trackBy: trackById">{{ fileOption.name }}</option>
-                    </select>
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="projecunitmangmentApp.file.file"
+                                for="field_file">File</label>
+                            <div>
+                                <div *ngIf="fileForm.get('file')!.value" class="form-text text-danger clearfix">
+                                    <a class="pull-left"
+                                        (click)="openFile(fileForm.get('fileContentType')!.value, fileForm.get('file')!.value)"
+                                        jhiTranslate="entity.action.open">open</a><br>
+                                    <span class="pull-left">{{ fileForm.get('fileContentType')!.value }}, {{
+                                        byteSize(fileForm.get('file')!.value) }}</span>
+                                    <button type="button"
+                                        (click)="fileForm.patchValue({file: null});fileForm.patchValue({fileContentType: null});"
+                                        class="btn btn-secondary btn-xs pull-right">
+                                        <fa-icon icon="times"></fa-icon>
+                                    </button>
+                                </div>
+                                <input type="file" id="file_file" (change)="setFileData($event, 'file', false)"
+                                    jhiTranslate="entity.action.addblob" />
+                            </div>
+                            <input type="hidden" class="form-control" name="file" id="field_file"
+                                formControlName="file" />
+                            <input type="hidden" class="form-control" name="fileContentType" id="field_fileContentType"
+                                formControlName="fileContentType" />
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label class="form-control-label" jhiTranslate="projecunitmangmentApp.file.type"
+                                for="field_type">Type</label>
+                            <input type="text" class="form-control" name="type" id="field_type"
+                                formControlName="type" />
+                        </div>
+                    </form>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.observation.project" for="field_project">Project</label>
+                    <label class="form-control-label" jhiTranslate="projecunitmangmentApp.observation.project"
+                        for="field_project">Project</label>
                     <select class="form-control" id="field_project" name="project" formControlName="project">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="projectOption.id === editForm.get('project')!.value?.id ? editForm.get('project')!.value : projectOption" *ngFor="let projectOption of projects; trackBy: trackById">{{ projectOption.name }}</option>
+                        <option
+                            [ngValue]="projectOption.id === editForm.get('project')!.value?.id ? editForm.get('project')!.value : projectOption"
+                            *ngFor="let projectOption of projects; trackBy: trackById">{{ projectOption.name }}</option>
                     </select>
                 </div>
             </div>
@@ -52,7 +94,8 @@
                     <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
 
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving"
+                    class="btn btn-primary">
                     <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
                 </button>
             </div>

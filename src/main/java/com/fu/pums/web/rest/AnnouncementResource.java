@@ -75,13 +75,19 @@ public class AnnouncementResource {
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
-    @PostMapping("/student-announcement")
-    public ResponseEntity<Announcement> createStudentAnnouncement(@RequestBody FacultyAnnouncementDTO facultyAnnouncementDTO){
-        Optional<Faculty> faculty = facultyService.findOneByFacultyAndBatch(facultyAnnouncementDTO.getFaculty(), facultyAnnouncementDTO.getBatch());
-        if (faculty.isPresent()){
-            faculty.get();
-        }
-        return null;
+    @PostMapping("/faculty-announcement")
+    public ResponseEntity<Announcement> createStudentAnnouncement(@RequestBody FacultyAnnouncementDTO facultyAnnouncementDTO) throws URISyntaxException {
+        Announcement announcement = new Announcement();
+        announcement.setFaculty(facultyAnnouncementDTO.getFaculty());
+        announcement.setAnnouncementType(facultyAnnouncementDTO.getAnnouncement().getAnnouncementType());
+        announcement.setContent(facultyAnnouncementDTO.getAnnouncement().getContent());
+        announcement.setOpen(true);
+        announcement.setStartDate(facultyAnnouncementDTO.getAnnouncement().getStartDate());
+        announcement.setEndDate(facultyAnnouncementDTO.getAnnouncement().getEndDate());
+        announcement.setTitle(facultyAnnouncementDTO.getAnnouncement().getTitle());
+
+        Announcement result = announcementService.save(announcement);
+        return ResponseEntity.created(new URI("/api/faculty-announcement"+result.getId())).headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString())).body(result);
     }
 
     /**

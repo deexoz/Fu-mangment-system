@@ -82,8 +82,4 @@ public class FacultyService {
         log.debug("Request to delete Faculty : {}", id);
         facultyRepository.deleteById(id);
     }
-
-    public Optional<Faculty> findOneByFacultyAndBatch(Faculty faculty, Batch batch) {
-      return  facultyRepository.findOneByFacultyAndBatch(faculty,batch);
-    }
 }

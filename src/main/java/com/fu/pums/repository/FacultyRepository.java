@@ -17,7 +17,7 @@ import java.util.Optional;
  */
 @Repository
 public interface FacultyRepository extends JpaRepository<Faculty, Long>, JpaSpecificationExecutor<Faculty> {
-    Optional<Faculty> findOneByFacultyAndBatch(Faculty faculty, Batch batch);
+
 
     @Query(value = "select distinct faculty from Faculty faculty left join fetch faculty.supervisors",
         countQuery = "select count(distinct faculty) from Faculty faculty")

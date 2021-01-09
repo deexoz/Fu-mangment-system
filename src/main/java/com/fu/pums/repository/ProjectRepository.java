@@ -24,5 +24,5 @@ public interface ProjectRepository extends JpaRepository<Project, Long>, JpaSpec
     Optional<List<Project>> findAllByFaculty (Faculty faculty);
     Optional<Project> findOneByStudents(Student student);
 
-    Set<Project> findAllByFacultyAndBatch(Faculty faculty, Batch batch);
+
 }

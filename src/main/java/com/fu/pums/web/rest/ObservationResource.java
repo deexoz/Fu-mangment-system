@@ -75,6 +75,16 @@ public class ObservationResource {
         if (observation.getId() != null) {
             throw new BadRequestAlertException("A new observation cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        if (observation.getFile() == null){
+            throw new BadRequestAlertException("A new observation Must have a file", ENTITY_NAME, "idexists");
+
+        }
+        File file = new File();
+        file.setProject(observation.getProject());
+        file.setUploadDate(observation.getCreationDate());
+        File fileResult = fileService.save(file);
+        observation.setFile(fileResult);
+
         Observation result = observationService.save(observation);
         return ResponseEntity.created(new URI("/api/observations/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))

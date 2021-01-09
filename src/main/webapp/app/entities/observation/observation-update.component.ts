@@ -4,7 +4,6 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiDataUtils, JhiFileLoadError, JhiEventManager, JhiEventWithContent } from 'ng-jhipster';
@@ -28,12 +27,19 @@ export class ObservationUpdateComponent implements OnInit {
   files: IFile[] = [];
   projects: IProject[] = [];
 
+  fileForm = this.fb.group({
+    name: [],
+    file: [],
+    fileContentType: [],
+    uploadDate: [],
+    type: [],
+  });
+
   editForm = this.fb.group({
     id: [],
     title: [],
     detail: [],
     creationDate: [],
-    file: [],
     project: [],
   });
 
@@ -56,28 +62,6 @@ export class ObservationUpdateComponent implements OnInit {
 
       this.updateForm(observation);
 
-      this.fileService
-        .query({ 'observationId.specified': 'false' })
-        .pipe(
-          map((res: HttpResponse<IFile[]>) => {
-            return res.body || [];
-          })
-        )
-        .subscribe((resBody: IFile[]) => {
-          if (!observation.file || !observation.file.id) {
-            this.files = resBody;
-          } else {
-            this.fileService
-              .find(observation.file.id)
-              .pipe(
-                map((subRes: HttpResponse<IFile>) => {
-                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
-                })
-              )
-              .subscribe((concatRes: IFile[]) => (this.files = concatRes));
-          }
-        });
-
       this.projectService.query().subscribe((res: HttpResponse<IProject[]>) => (this.projects = res.body || []));
     });
   }
@@ -88,7 +72,6 @@ export class ObservationUpdateComponent implements OnInit {
       title: observation.title,
       detail: observation.detail,
       creationDate: observation.creationDate ? observation.creationDate.format(DATE_TIME_FORMAT) : null,
-      file: observation.file,
       project: observation.project,
     });
   }
@@ -102,13 +85,14 @@ export class ObservationUpdateComponent implements OnInit {
   }
 
   setFileData(event: any, field: string, isImage: boolean): void {
-    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe(null, (err: JhiFileLoadError) => {
+    console.warn('jdfjsdfkh');
+
+    this.dataUtils.loadFileToForm(event, this.fileForm, field, isImage).subscribe(null, (err: JhiFileLoadError) => {
       this.eventManager.broadcast(
         new JhiEventWithContent<AlertError>('projecunitmangmentApp.error', { ...err, key: 'error.file.' + err.key })
       );
     });
   }
-
   previousState(): void {
     window.history.back();
   }
@@ -116,6 +100,8 @@ export class ObservationUpdateComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const observation = this.createFromForm();
+    console.warn(observation);
+
     if (observation.id !== undefined) {
       this.subscribeToSaveResponse(this.observationService.update(observation));
     } else {
@@ -126,13 +112,12 @@ export class ObservationUpdateComponent implements OnInit {
   private createFromForm(): IObservation {
     return {
       ...new Observation(),
-      id: this.editForm.get(['id'])!.value,
       title: this.editForm.get(['title'])!.value,
       detail: this.editForm.get(['detail'])!.value,
       creationDate: this.editForm.get(['creationDate'])!.value
         ? moment(this.editForm.get(['creationDate'])!.value, DATE_TIME_FORMAT)
         : undefined,
-      file: this.editForm.get(['file'])!.value,
+      file: this.fileForm.value,
       project: this.editForm.get(['project'])!.value,
     };
   }

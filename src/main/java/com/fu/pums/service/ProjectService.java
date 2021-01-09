@@ -91,8 +91,4 @@ public class ProjectService {
         return projectRepository.findAllByFaculty(faculty);
     }
 
-
-    public Set<Project> findAllByFacultyAndBatch(Faculty faculty, Batch batch) {
-        return projectRepository.findAllByFacultyAndBatch(faculty, batch);
-    }
 }

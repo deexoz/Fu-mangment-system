@@ -20,31 +20,6 @@
                 </a>
             </li>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
-
-            <li>
-                        <a class="dropdown-item" routerLink="student" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.student">Student</span>
-                        </a>
-                    </li>
-            <li>
-                        <a class="dropdown-item" routerLink="faculty" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.faculty">Faculty</span>
-                        </a>
-                    </li>
-            <li>
-                        <a class="dropdown-item" routerLink="announcement" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.announcement">Announcement</span>
-                        </a>
-                    </li>
-            <li>
-                        <a class="dropdown-item" routerLink="batch" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                            <span jhiTranslate="global.menu.entities.batch">Batch</span>
-                        </a>
-                    </li>
             <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
 
             <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic"

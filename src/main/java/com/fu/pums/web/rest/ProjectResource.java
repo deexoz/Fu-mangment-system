@@ -99,7 +99,7 @@ public class ProjectResource {
         }
 
             if (studentProjectDTO.getStudents().isEmpty()) {
-            throw new BadRequestAlertException("is empty", "ljdfjg",
+            throw new BadRequestAlertException("is empty", ENTITY_NAME,
                 "is empty of sudent");
 
         }
