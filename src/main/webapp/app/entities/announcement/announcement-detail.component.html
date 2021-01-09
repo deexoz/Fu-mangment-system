@@ -32,6 +32,12 @@
                 <dd>
                     <span>{{ announcement.open }}</span>
                 </dd>
+                <dt><span jhiTranslate="projecunitmangmentApp.announcement.faculty">Faculty</span></dt>
+                <dd>
+                    <div *ngIf="announcement.faculty">
+                        <a [routerLink]="['/faculty', announcement.faculty?.id, 'view']">{{ announcement.faculty?.name }}</a>
+                    </div>
+                </dd>
             </dl>
 
             <button type="submit"

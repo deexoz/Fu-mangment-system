@@ -30,10 +30,6 @@ public class Batch implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Project> projects = new HashSet<>();
 
-    @OneToMany(mappedBy = "batch")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    private Set<Student> students = new HashSet<>();
-
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
         return id;
@@ -79,31 +75,6 @@ public class Batch implements Serializable {
 
     public void setProjects(Set<Project> projects) {
         this.projects = projects;
-    }
-
-    public Set<Student> getStudents() {
-        return students;
-    }
-
-    public Batch students(Set<Student> students) {
-        this.students = students;
-        return this;
-    }
-
-    public Batch addStudents(Student student) {
-        this.students.add(student);
-        student.setBatch(this);
-        return this;
-    }
-
-    public Batch removeStudents(Student student) {
-        this.students.remove(student);
-        student.setBatch(null);
-        return this;
-    }
-
-    public void setStudents(Set<Student> students) {
-        this.students = students;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 

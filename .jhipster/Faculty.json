@@ -24,6 +24,12 @@
       "relationshipName": "projects"
     },
     {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "announcement",
+      "otherEntityRelationshipName": "faculty",
+      "relationshipName": "announcements"
+    },
+    {
       "relationshipType": "many-to-many",
       "otherEntityName": "supervisor",
       "otherEntityRelationshipName": "faculties",

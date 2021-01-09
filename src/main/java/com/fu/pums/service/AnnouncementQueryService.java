@@ -100,6 +100,10 @@ public class AnnouncementQueryService extends QueryService<Announcement> {
             if (criteria.getOpen() != null) {
                 specification = specification.and(buildSpecification(criteria.getOpen(), Announcement_.open));
             }
+            if (criteria.getFacultyId() != null) {
+                specification = specification.and(buildSpecification(criteria.getFacultyId(),
+                    root -> root.join(Announcement_.faculty, JoinType.LEFT).get(Faculty_.id)));
+            }
         }
         return specification;
     }

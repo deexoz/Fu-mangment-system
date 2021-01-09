@@ -38,8 +38,6 @@ public class StudentCriteria implements Serializable, Criteria {
 
     private LongFilter projectId;
 
-    private LongFilter batchId;
-
     public StudentCriteria() {
     }
 
@@ -51,7 +49,6 @@ public class StudentCriteria implements Serializable, Criteria {
         this.userId = other.userId == null ? null : other.userId.copy();
         this.facultyId = other.facultyId == null ? null : other.facultyId.copy();
         this.projectId = other.projectId == null ? null : other.projectId.copy();
-        this.batchId = other.batchId == null ? null : other.batchId.copy();
     }
 
     @Override
@@ -115,14 +112,6 @@ public class StudentCriteria implements Serializable, Criteria {
         this.projectId = projectId;
     }
 
-    public LongFilter getBatchId() {
-        return batchId;
-    }
-
-    public void setBatchId(LongFilter batchId) {
-        this.batchId = batchId;
-    }
-
 
     @Override
     public boolean equals(Object o) {
@@ -140,8 +129,7 @@ public class StudentCriteria implements Serializable, Criteria {
             Objects.equals(phone, that.phone) &&
             Objects.equals(userId, that.userId) &&
             Objects.equals(facultyId, that.facultyId) &&
-            Objects.equals(projectId, that.projectId) &&
-            Objects.equals(batchId, that.batchId);
+            Objects.equals(projectId, that.projectId);
     }
 
     @Override
@@ -153,8 +141,7 @@ public class StudentCriteria implements Serializable, Criteria {
         phone,
         userId,
         facultyId,
-        projectId,
-        batchId
+        projectId
         );
     }
 
@@ -169,7 +156,6 @@ public class StudentCriteria implements Serializable, Criteria {
                 (userId != null ? "userId=" + userId + ", " : "") +
                 (facultyId != null ? "facultyId=" + facultyId + ", " : "") +
                 (projectId != null ? "projectId=" + projectId + ", " : "") +
-                (batchId != null ? "batchId=" + batchId + ", " : "") +
             "}";
     }
 

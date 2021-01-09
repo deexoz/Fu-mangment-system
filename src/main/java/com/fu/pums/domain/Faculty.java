@@ -37,6 +37,10 @@ public class Faculty implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Project> projects = new HashSet<>();
 
+    @OneToMany(mappedBy = "faculty")
+    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+    private Set<Announcement> announcements = new HashSet<>();
+
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JoinTable(name = "faculty_supervisors",
@@ -127,6 +131,31 @@ public class Faculty implements Serializable {
 
     public void setProjects(Set<Project> projects) {
         this.projects = projects;
+    }
+
+    public Set<Announcement> getAnnouncements() {
+        return announcements;
+    }
+
+    public Faculty announcements(Set<Announcement> announcements) {
+        this.announcements = announcements;
+        return this;
+    }
+
+    public Faculty addAnnouncements(Announcement announcement) {
+        this.announcements.add(announcement);
+        announcement.setFaculty(this);
+        return this;
+    }
+
+    public Faculty removeAnnouncements(Announcement announcement) {
+        this.announcements.remove(announcement);
+        announcement.setFaculty(null);
+        return this;
+    }
+
+    public void setAnnouncements(Set<Announcement> announcements) {
+        this.announcements = announcements;
     }
 
     public Set<Supervisor> getSupervisors() {

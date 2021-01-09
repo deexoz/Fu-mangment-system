@@ -26,11 +26,5 @@
                                  referencedColumnNames="id"
                                  referencedTableName="project"/>
 
-        <addForeignKeyConstraint baseColumnNames="batch_id"
-                                 baseTableName="student"
-                                 constraintName="fk_student_batch_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="batch"/>
-
     </changeSet>
 </databaseChangeLog>

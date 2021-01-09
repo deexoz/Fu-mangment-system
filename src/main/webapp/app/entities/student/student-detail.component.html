@@ -36,12 +36,6 @@
                         <a [routerLink]="['/project', student.project?.id, 'view']">{{ student.project?.name }}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="projecunitmangmentApp.student.batch">Batch</span></dt>
-                <dd>
-                    <div *ngIf="student.batch">
-                        <a [routerLink]="['/batch', student.batch?.id, 'view']">{{ student.batch?.year }}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"
