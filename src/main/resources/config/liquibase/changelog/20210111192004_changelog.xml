@@ -1,0 +1,149 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.9.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <changeSet author="ashraf (generated)" id="1610392807901-2">
+        <createTable tableName="announcement">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="announcementPK"/>
+            </column>
+            <column name="announcement_type" type="VARCHAR(255)"/>
+            <column name="content" type="TEXT"/>
+            <column name="end_date" type="date"/>
+            <column name="open" type="BOOLEAN"/>
+            <column name="start_date" type="date"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="faculty_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-3">
+        <createTable tableName="batch">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="batchPK"/>
+            </column>
+            <column name="year" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-4">
+        <createTable tableName="faculty">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="facultyPK"/>
+            </column>
+            <column name="code" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-5">
+        <createTable tableName="faculty_supervisors">
+            <column name="faculty_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="supervisors_id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-6">
+        <createTable tableName="file">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="filePK"/>
+            </column>
+            <column name="file" type="BYTEA"/>
+            <column name="file_content_type" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="upload_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="project_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-7">
+        <createTable tableName="observation">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="observationPK"/>
+            </column>
+            <column name="creation_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="detail" type="TEXT"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="file_id" type="BIGINT"/>
+            <column name="project_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-8">
+        <createTable tableName="project">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="projectPK"/>
+            </column>
+            <column name="details" type="TEXT"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="objectives" type="TEXT"/>
+            <column name="problems" type="TEXT"/>
+            <column name="batch_id" type="BIGINT"/>
+            <column name="faculty_id" type="BIGINT"/>
+            <column name="supervisor_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-9">
+        <createTable tableName="student">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="studentPK"/>
+            </column>
+            <column name="full_name_arabic" type="VARCHAR(255)"/>
+            <column name="jhi_index" type="VARCHAR(255)"/>
+            <column name="phone" type="VARCHAR(255)"/>
+            <column name="faculty_id" type="BIGINT"/>
+            <column name="project_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-10">
+        <createTable tableName="supervisor">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="supervisorPK"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="full_name" type="VARCHAR(255)"/>
+            <column name="gender" type="VARCHAR(255)"/>
+            <column name="phone_number" type="VARCHAR(255)"/>
+            <column name="role" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-11">
+        <addUniqueConstraint columnNames="file_id" constraintName="UC_OBSERVATIONFILE_ID_COL" tableName="observation"/>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-12">
+        <addForeignKeyConstraint baseColumnNames="faculty_id" baseTableName="student" constraintName="FK6geq7tnjed7u4hvgv1ac6lyh" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="faculty" validate="true"/>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-13">
+        <addForeignKeyConstraint baseColumnNames="faculty_id" baseTableName="project" constraintName="FK9mr833hpedoosvdr4tv3nf3y8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="faculty" validate="true"/>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-14">
+        <addForeignKeyConstraint baseColumnNames="project_id" baseTableName="file" constraintName="FK9xpbf8klk9il032sq5xupl1f" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="project" validate="true"/>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-15">
+        <addForeignKeyConstraint baseColumnNames="file_id" baseTableName="observation" constraintName="FKaxa4p65pns0ieh4d7ybg1wd9s" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="file" validate="true"/>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-16">
+        <addForeignKeyConstraint baseColumnNames="batch_id" baseTableName="project" constraintName="FKbl3o1vn20ck3v1nunjyrh436i" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="batch" validate="true"/>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-17">
+        <addForeignKeyConstraint baseColumnNames="supervisors_id" baseTableName="faculty_supervisors" constraintName="FKdj4rln1u2nlw8r58bit295jfa" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="supervisor" validate="true"/>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-18">
+        <addForeignKeyConstraint baseColumnNames="id" baseTableName="student" constraintName="FKip45dg72khoip45ofc3hkju8v" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-19">
+        <addForeignKeyConstraint baseColumnNames="faculty_id" baseTableName="faculty_supervisors" constraintName="FKnv9br21my6jap6vwq7jnxh4c3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="faculty" validate="true"/>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-20">
+        <addForeignKeyConstraint baseColumnNames="supervisor_id" baseTableName="project" constraintName="FKqcjb2k6p87r2ngcggtxnacuam" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="supervisor" validate="true"/>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-21">
+        <addForeignKeyConstraint baseColumnNames="project_id" baseTableName="student" constraintName="FKr6av6arpoy7wpbqipg41id1mn" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="project" validate="true"/>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-22">
+        <addForeignKeyConstraint baseColumnNames="faculty_id" baseTableName="announcement" constraintName="FKs1tlerxat36x9y97fpa08fos0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="faculty" validate="true"/>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-23">
+        <addForeignKeyConstraint baseColumnNames="project_id" baseTableName="observation" constraintName="FKtng8v4k62d498u95g3cly1dcp" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="project" validate="true"/>
+    </changeSet>
+    <changeSet author="ashraf (generated)" id="1610392807901-1">
+        <alterSequence sequenceName="sequence_generator"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,12 @@
+version: '2'
+services:
+  projecunitmangment-postgresql:
+    image: postgres:12.3
+    # volumes:
+    #     - ~/volumes/jhipster/projecunitmangment/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=projecunitmangment
+      - POSTGRES_PASSWORD=
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5432
