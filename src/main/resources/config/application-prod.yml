@@ -34,8 +34,8 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:postgresql://localhost:5432/projecunitmangment
-    username: projecunitmangment
-    password:
+    username: postgres
+    password: 123
     hikari:
       poolName: Hikari
       auto-commit: false
