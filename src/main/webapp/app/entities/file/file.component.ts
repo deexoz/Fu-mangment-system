@@ -32,7 +32,7 @@ export class FileComponent implements OnInit, OnDestroy {
     protected router: Router,
     protected eventManager: JhiEventManager,
     protected modalService: NgbModal
-  ) {}
+  ) { }
 
   loadPage(page?: number, dontNavigate?: boolean): void {
     const pageToLoad: number = page || this.page || 1;
@@ -128,6 +128,8 @@ export class FileComponent implements OnInit, OnDestroy {
     console.warn(file);
     const data = file.file ?? '';
     const contentType = file.fileContentType ?? '';
+    console.warn(data);
+
 
     this.dataUtils.downloadFile(contentType, data, contentType);
   }
